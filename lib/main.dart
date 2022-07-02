@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'dart:math';
+import 'package:audioplayers/audioplayers.dart';
+import 'package:flutter_kids_matching_game/screens/color_game.dart';
 
 void main() {
   runApp(MyApp());
@@ -13,11 +16,6 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        home: Scaffold(
-      appBar: AppBar(
-        title: Text("Matching Game"),
-      ),
-      body: Center(child: Text("Hello Moto")),
-    ));
+        theme: ThemeData(fontFamily: 'Sunnyspells'), home: ColorGame());
   }
 }
