@@ -3,25 +3,43 @@ import 'dart:math';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 
-class ColorGame extends StatefulWidget {
-  const ColorGame({Key? key}) : super(key: key);
+class AnimalGameScreen extends StatefulWidget {
+  const AnimalGameScreen({Key? key}) : super(key: key);
 
   @override
-  State<ColorGame> createState() => _ColorGameState();
+  State<AnimalGameScreen> createState() => _AnimalGameScreenState();
 }
 
-class _ColorGameState extends State<ColorGame> {
+class _AnimalGameScreenState extends State<AnimalGameScreen> {
   //map object to keep track of the player's score
   final Map<String, bool> score = {};
 
   //choices for the game
-  final Map choices = {
-    'green': Colors.green,
-    'yellow': Colors.yellow,
-    'red': Colors.red,
-    'purple': Colors.purple,
-    'brown': Colors.brown,
-    'orange': Colors.orange,
+  // final Map questionChoices = {
+  //   'cat': '🐘',
+  //   'dog': '🐘',
+  //   'horse': '🐘',
+  //   'cow': '🐘',
+  //   'bird': '🐘',
+  //   'sheep': '🐘',
+  // };
+
+  final Map questionChoices = {
+    'cat': '🐱',
+    'dog': '🐶',
+    'horse': '🐎',
+    'cow': '🐮',
+    'bird': '🐦',
+    'sheep': '🐑',
+  };
+
+  final Map answerChoices = {
+    'cat': '🐱',
+    'dog': '🐶',
+    'horse': '🐎',
+    'cow': '🐮',
+    'bird': '🐦',
+    'sheep': '🐑',
   };
 
   //random seed to shuffle order of items
@@ -51,35 +69,36 @@ class _ColorGameState extends State<ColorGame> {
         children: [
           Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: choices.keys.map((colors) {
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: questionChoices.keys.map((animalName) {
                 return Draggable<String>(
-                  data: colors,
-                  feedback: ColorWidget(color: colors),
-                  childWhenDragging: ColorWidget(
-                    color: colors,
+                  data: animalName,
+                  feedback: AnimalWidget(color: animalName),
+                  childWhenDragging: AnimalWidget(
+                    color: animalName,
                   ),
-                  child:
-                      ColorWidget(color: score[colors] == true ? '✅' : colors),
+                  child: AnimalWidget(
+                      color: score[animalName] == true ? '✅' : animalName),
                 );
               }).toList()),
           Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children:
-                choices.keys.map((colors) => _buildDragTarget(colors)).toList()
-                  ..shuffle(
-                    (Random(seed)),
-                  ),
+            children: questionChoices.keys
+                .map((animalIcon) => _buildDragTarget(animalIcon))
+                .toList()
+              ..shuffle(
+                (Random(seed)),
+              ),
           ),
         ],
       ),
     );
   }
 
-  Widget _buildDragTarget(color) {
+  Widget _buildDragTarget(animalIcon) {
     return DragTarget<String>(
       builder: (BuildContext context, List<String?> incoming, List rejected) {
-        if (score[color] == true) {
+        if (score[animalIcon] == true) {
           return Container(
             color: Colors.white,
             child: Text(
@@ -92,18 +111,22 @@ class _ColorGameState extends State<ColorGame> {
           );
         } else {
           return Container(
-            color: choices[color],
+            child: Text(
+              questionChoices[animalIcon],
+              style: TextStyle(fontSize: 60),
+            ),
+            alignment: Alignment.center,
             height: 80,
             width: 200,
           );
         }
       },
       onWillAccept: (data) {
-        return data == color;
+        return data == animalIcon;
       },
       onAccept: (data) async {
         setState(() {
-          score[color] = true;
+          score[animalIcon] = true;
         });
         // String url = 'assets/sounds/success_bell.mp3';
         // await _audioController.play(DeviceFileSource(url));
@@ -117,17 +140,17 @@ class _ColorGameState extends State<ColorGame> {
   }
 }
 
-class ColorWidget extends StatelessWidget {
+class AnimalWidget extends StatelessWidget {
   late final String color;
 
-  ColorWidget({required this.color});
+  AnimalWidget({required this.color});
 
   @override
   Widget build(BuildContext context) {
     return Material(
       color: Colors.transparent,
       child: Container(
-        alignment: Alignment.center,
+        // alignment: Alignment.center,
         height: 100,
         padding: EdgeInsets.all(8),
         child: Text(
