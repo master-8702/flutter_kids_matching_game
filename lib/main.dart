@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter_kids_matching_game/screens/animal_game_screen.dart';
 import 'package:flutter_kids_matching_game/screens/color_game_screen.dart';
+import 'package:flutter_kids_matching_game/screens/fruit_game_screen.dart';
 import 'package:flutter_kids_matching_game/screens/game-list_screen.dart';
 
 void main() {
@@ -24,6 +25,7 @@ class _MyAppState extends State<MyApp> {
         '/': (context) => GameListScreen(),
         '/colorGame': (context) => ColorGameScreen(),
         '/animalGame': (context) => AnimalGameScreen(),
+        '/fruitGame': (context) => FruitGameScreen(),
       },
     );
   }

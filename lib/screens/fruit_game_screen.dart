@@ -1,28 +1,26 @@
-import 'dart:math';
-
-import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
+import 'dart:math';
+import 'package:audioplayers/audioplayers.dart';
 
-class AnimalGameScreen extends StatefulWidget {
-  const AnimalGameScreen({Key? key}) : super(key: key);
+class FruitGameScreen extends StatefulWidget {
+  const FruitGameScreen({Key? key}) : super(key: key);
 
   @override
-  State<AnimalGameScreen> createState() => _AnimalGameScreenState();
+  State<FruitGameScreen> createState() => _FruitGameScreenState();
 }
 
-class _AnimalGameScreenState extends State<AnimalGameScreen> {
+class _FruitGameScreenState extends State<FruitGameScreen> {
   //map object to keep track of the player's score
   final Map<String, bool> score = {};
 
   final Map questionChoices = {
-    'cat': '🐱',
-    'dog': '🐶',
-    'horse': '🐎',
-    'cow': '🐮',
-    'bird': '🐦',
-    'sheep': '🐑',
+    'banana': '🍌',
+    'orange': '🍊',
+    'apple': '🍎',
+    'strawberry': '🍓',
+    'avocado': '🥑',
+    'pineapple': '🍍',
   };
-
   //random seed to shuffle order of items
   int seed = 0;
 
@@ -51,21 +49,21 @@ class _AnimalGameScreenState extends State<AnimalGameScreen> {
           Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: questionChoices.keys.map((animalName) {
+              children: questionChoices.keys.map((fruitName) {
                 return Draggable<String>(
-                  data: animalName,
-                  feedback: AnimalWidget(color: animalName),
-                  childWhenDragging: AnimalWidget(
-                    color: animalName,
+                  data: fruitName,
+                  feedback: FruitWidget(color: fruitName),
+                  childWhenDragging: FruitWidget(
+                    color: fruitName,
                   ),
-                  child: AnimalWidget(
-                      color: score[animalName] == true ? '✅' : animalName),
+                  child: FruitWidget(
+                      color: score[fruitName] == true ? '✅' : fruitName),
                 );
               }).toList()),
           Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: questionChoices.keys
-                .map((animalIcon) => _buildDragTarget(animalIcon))
+                .map((fruitIcon) => _buildDragTarget(fruitIcon))
                 .toList()
               ..shuffle(
                 (Random(seed)),
@@ -76,10 +74,10 @@ class _AnimalGameScreenState extends State<AnimalGameScreen> {
     );
   }
 
-  Widget _buildDragTarget(animalIcon) {
+  Widget _buildDragTarget(fruitIcon) {
     return DragTarget<String>(
       builder: (BuildContext context, List<String?> incoming, List rejected) {
-        if (score[animalIcon] == true) {
+        if (score[fruitIcon] == true) {
           return Container(
             color: Colors.white,
             child: Text(
@@ -88,30 +86,28 @@ class _AnimalGameScreenState extends State<AnimalGameScreen> {
             ),
             alignment: Alignment.center,
             height: 80,
-            width: 200,
+            width: 180,
           );
         } else {
           return Container(
             child: Text(
-              questionChoices[animalIcon],
+              questionChoices[fruitIcon],
               style: TextStyle(fontSize: 60),
             ),
             alignment: Alignment.center,
             height: 80,
-            width: 200,
+            width: 180,
           );
         }
       },
       onWillAccept: (data) {
-        return data == animalIcon;
+        return data == fruitIcon;
       },
       onAccept: (data) async {
         setState(() {
-          score[animalIcon] = true;
+          score[fruitIcon] = true;
         });
-        // String url = 'assets/sounds/success_bell.mp3';
-        // await _audioController.play(DeviceFileSource(url));
-        // await _audioController.setSource(AssetSource('success_bell.mp3'));
+
         await _audioController.play(
           AssetSource('sounds/success_bell.mp3'),
         );
@@ -121,10 +117,10 @@ class _AnimalGameScreenState extends State<AnimalGameScreen> {
   }
 }
 
-class AnimalWidget extends StatelessWidget {
+class FruitWidget extends StatelessWidget {
   late final String color;
 
-  AnimalWidget({required this.color});
+  FruitWidget({required this.color});
 
   @override
   Widget build(BuildContext context) {
@@ -136,7 +132,7 @@ class AnimalWidget extends StatelessWidget {
         padding: EdgeInsets.all(8),
         child: Text(
           color,
-          style: TextStyle(color: Colors.black, fontSize: 50),
+          style: TextStyle(color: Colors.black, fontSize: 40),
         ),
       ),
     );

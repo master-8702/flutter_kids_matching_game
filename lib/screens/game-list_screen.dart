@@ -38,6 +38,17 @@ class _GameListScreenState extends State<GameListScreen> {
                 Navigator.pushNamed(context, '/animalGame');
               },
               child: Text("Animal Game"),
+            ),
+            TextButton(
+              style: ElevatedButton.styleFrom(
+                primary: Colors.black,
+                shape: BeveledRectangleBorder(
+                    borderRadius: BorderRadius.circular(12)),
+              ),
+              onPressed: () {
+                Navigator.pushNamed(context, '/fruitGame');
+              },
+              child: Text("Fruit Game"),
             )
           ],
         ),
