@@ -13,12 +13,30 @@ class _FruitGameScreenState extends State<FruitGameScreen> {
   //map object to keep track of the player's score
   final Map<String, bool> score = {};
 
-  final Map questionChoices = {
+  final Map fruitMatchingQuestionChoices1 = {
     'banana': '🍌',
     'orange': '🍊',
     'apple': '🍎',
     'strawberry': '🍓',
     'avocado': '🥑',
+    'pineapple': '🍍',
+  };
+
+  final Map fruitMatchingQuestionChoices2 = {
+    'grapes': '🍇',
+    'watermelon': '🍉',
+    'lemon': '🍋',
+    'tangerine': '🍊',
+    'avocado': '🥑',
+    'pineapple': '🍍',
+  };
+
+  final Map fruitMatchingQuestionChoices3 = {
+    'mango': '🥭',
+    'coconut': '🥥',
+    'cherries': '🍒',
+    'kiwi fruit': '🍓',
+    'pear': '🍐',
     'pineapple': '🍍',
   };
   //random seed to shuffle order of items
@@ -49,7 +67,7 @@ class _FruitGameScreenState extends State<FruitGameScreen> {
           Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: questionChoices.keys.map((fruitName) {
+              children: fruitMatchingQuestionChoices1.keys.map((fruitName) {
                 return Draggable<String>(
                   data: fruitName,
                   feedback: FruitWidget(color: fruitName),
@@ -62,7 +80,7 @@ class _FruitGameScreenState extends State<FruitGameScreen> {
               }).toList()),
           Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: questionChoices.keys
+            children: fruitMatchingQuestionChoices1.keys
                 .map((fruitIcon) => _buildDragTarget(fruitIcon))
                 .toList()
               ..shuffle(
@@ -91,7 +109,7 @@ class _FruitGameScreenState extends State<FruitGameScreen> {
         } else {
           return Container(
             child: Text(
-              questionChoices[fruitIcon],
+              fruitMatchingQuestionChoices1[fruitIcon],
               style: TextStyle(fontSize: 60),
             ),
             alignment: Alignment.center,

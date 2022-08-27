@@ -26,7 +26,7 @@ class _GameListScreenState extends State<GameListScreen> {
               onPressed: () {
                 Navigator.pushNamed(context, '/colorGame');
               },
-              child: Text("Color Game"),
+              child: const Text("Color Game"),
             ),
             TextButton(
               style: ElevatedButton.styleFrom(
@@ -37,7 +37,7 @@ class _GameListScreenState extends State<GameListScreen> {
               onPressed: () {
                 Navigator.pushNamed(context, '/animalGame');
               },
-              child: Text("Animal Game"),
+              child: const Text("Animal Game"),
             ),
             TextButton(
               style: ElevatedButton.styleFrom(
@@ -48,7 +48,7 @@ class _GameListScreenState extends State<GameListScreen> {
               onPressed: () {
                 Navigator.pushNamed(context, '/fruitGame');
               },
-              child: Text("Fruit Game"),
+              child: const Text("Fruit Game"),
             )
           ],
         ),

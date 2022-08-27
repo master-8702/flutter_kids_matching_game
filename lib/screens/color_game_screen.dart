@@ -1,7 +1,8 @@
-import 'dart:math';
-
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+import '../models/gameItems.dart';
 
 class ColorGameScreen extends StatefulWidget {
   const ColorGameScreen({Key? key}) : super(key: key);
@@ -11,128 +12,221 @@ class ColorGameScreen extends StatefulWidget {
 }
 
 class _ColorGameScreenState extends State<ColorGameScreen> {
-  //map object to keep track of the player's score
-  final Map<String, bool> score = {};
+  //to keep track of the player's score and game status
 
-  //choices for the game
-  final Map choices = {
-    'green': Colors.green,
-    'yellow': Colors.yellow,
-    'red': Colors.red,
-    'purple': Colors.purple,
-    'brown': Colors.brown,
-    'orange': Colors.orange,
-  };
+  // here new score
+  late int score;
+  late bool gameOver;
 
-  //random seed to shuffle order of items
-  int seed = 0;
+  late List<GameItem> choice_A;
+  late List<GameItem> choice_B;
+
+  @override
+  void initState() {
+    super.initState();
+
+    initGame();
+  }
+
+//to initialize or restart the game
+
+  void initGame() {
+    score = 0;
+    gameOver = false;
+
+    choice_A = [
+      GameItem(
+          image: "assets/images/colors/Red.png", name: "Red", value: "red"),
+      GameItem(
+          image: "assets/images/colors/Cyan.png", name: "Cyan", value: "cyan"),
+      GameItem(
+          image: "assets/images/colors/Green.png",
+          name: "Green",
+          value: "green"),
+      GameItem(
+          image: "assets/images/colors/Purple.png",
+          name: "Purple",
+          value: "purple"),
+      GameItem(
+          image: "assets/images/colors/Yellow.png",
+          name: "Yellow",
+          value: "yellow"),
+      GameItem(
+          image: "assets/images/colors/Blue.png", name: "Blue", value: "blue"),
+      // GameItem(
+      //     image: "assets/images/colors/Black.png",
+      //     name: "Black",
+      //     value: "black"),
+      // GameItem(
+      //     image: "assets/images/colors/Brown.png",
+      //     name: "Brown",
+      //     value: "brown"),
+      // GameItem(
+      //     image: "assets/images/colors/Orange.png",
+      //     name: "Orange",
+      //     value: "orange"),
+    ];
+
+    // choice_B = ["Dog", "Cat", "Horse", "Kiwi Bird", "Cow", "Fish"];
+    choice_B = List<GameItem>.from(choice_A);
+
+    choice_A.shuffle();
+    choice_B.shuffle();
+  }
 
   // we use it to play sounds
   final _audioController = AudioPlayer();
 
   @override
   Widget build(BuildContext context) {
+    if (choice_A.length == 0) {
+      gameOver = true;
+    }
     return Scaffold(
       appBar: AppBar(
-        title: Text('Score ${score.length} / 6'),
+        title: Text('Score $score'),
         backgroundColor: Colors.pink,
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          setState(() {
-            score.clear();
-            seed++;
-          });
+          initGame();
+          setState(() {});
         },
         child: Icon(Icons.refresh),
       ),
-      body: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          Column(
+      body: Material(
+        child: Expanded(
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: choices.keys.map((colors) {
-                return Draggable<String>(
-                  data: colors,
-                  feedback: ColorWidget(color: colors),
-                  childWhenDragging: ColorWidget(
-                    color: colors,
-                  ),
-                  child:
-                      ColorWidget(color: score[colors] == true ? '✅' : colors),
-                );
-              }).toList()),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children:
-                choices.keys.map((colors) => _buildDragTarget(colors)).toList()
-                  ..shuffle(
-                    (Random(seed)),
-                  ),
-          ),
-        ],
-      ),
-    );
-  }
+              children: [
+                if (!gameOver)
+                  Row(
+                    children: <Widget>[
+                      Column(
+                        children: choice_A.map((choice) {
+                          return Container(
+                            margin: EdgeInsets.all(8),
+                            child: Draggable<GameItem>(
+                              data: choice,
+                              feedback: Text(
+                                choice.name,
+                                style: const TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 40,
+                                ),
+                              ),
+                              childWhenDragging: Container(
+                                padding: EdgeInsets.all(12),
+                                height: 80,
+                                width: 150,
+                                child: Text(
+                                  choice.name,
+                                  style: const TextStyle(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 40,
+                                  ),
+                                ),
+                              ),
+                              child: Container(
+                                padding: EdgeInsets.all(12),
+                                height: 80,
+                                width: 150,
+                                child: Text(
+                                  choice.name,
+                                  style: const TextStyle(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 40,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          );
+                        }).toList(),
+                      ),
+                      Spacer(),
+                      Column(
+                        children: choice_B.map((choice) {
+                          return DragTarget<GameItem>(
+                              onAccept: (receivedItem) async {
+                            if (receivedItem.value == choice.value) {
+                              await _audioController.play(
+                                  AssetSource('sounds/success_bell2.mp3'));
 
-  Widget _buildDragTarget(color) {
-    return DragTarget<String>(
-      builder: (BuildContext context, List<String?> incoming, List rejected) {
-        if (score[color] == true) {
-          return Container(
-            color: Colors.white,
-            child: Text(
-              "Correct!",
-              style: (TextStyle(fontSize: 30)),
+                              // if (!mounted) return;
+                              setState(() {
+                                choice_A.remove(receivedItem);
+                                choice_B.remove(choice);
+                                score += 10;
+                                choice.accepting = false;
+                              });
+                            } else {
+                              setState(() {
+                                score -= 5;
+                                choice.accepting = false;
+                              });
+                            }
+                          }, onLeave: (receivedItem) {
+                            setState(() {
+                              choice.accepting = false;
+                            });
+                          }, onWillAccept: (receivedItem) {
+                            setState(() {
+                              choice.accepting = true;
+                            });
+                            return true;
+                          }, builder: (context, acceptedItem, rejectedItem) {
+                            return Container(
+                              color:
+                                  choice.accepting ? Colors.red : Colors.white,
+                              height: 80,
+                              width: 105,
+                              alignment: Alignment.center,
+                              margin: EdgeInsets.all(8),
+                              child: Image.asset(choice.image),
+                            );
+                          });
+                        }).toList(),
+                      )
+                    ],
+                  ),
+                if (gameOver)
+                  Column(
+                    children: [
+                      Text(
+                        score.toString() + "/60",
+                        style: TextStyle(fontSize: 50),
+                      ),
+                      const Text(
+                        "GameOver",
+                        style: TextStyle(
+                            color: Colors.red,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 40),
+                      ),
+                      Center(
+                        child: ElevatedButton(
+                          child: const Text(
+                            "Try Again",
+                            style: TextStyle(
+                              fontSize: 30,
+                            ),
+                          ),
+                          onPressed: () {
+                            initGame();
+                            setState(() {});
+                          },
+                        ),
+                      )
+                    ],
+                  ),
+              ],
             ),
-            alignment: Alignment.center,
-            height: 80,
-            width: 200,
-          );
-        } else {
-          return Container(
-            color: choices[color],
-            height: 80,
-            width: 200,
-          );
-        }
-      },
-      onWillAccept: (data) {
-        return data == color;
-      },
-      onAccept: (data) async {
-        setState(() {
-          score[color] = true;
-        });
-        // String url = 'assets/sounds/success_bell.mp3';
-        // await _audioController.play(DeviceFileSource(url));
-        // await _audioController.setSource(AssetSource('success_bell.mp3'));
-        await _audioController.play(
-          AssetSource('sounds/success_bell.mp3'),
-        );
-      },
-      onLeave: (data) {},
-    );
-  }
-}
-
-class ColorWidget extends StatelessWidget {
-  late final String color;
-
-  ColorWidget({required this.color});
-
-  @override
-  Widget build(BuildContext context) {
-    return Material(
-      color: Colors.transparent,
-      child: Container(
-        alignment: Alignment.center,
-        height: 100,
-        padding: EdgeInsets.all(8),
-        child: Text(
-          color,
-          style: TextStyle(color: Colors.black, fontSize: 50),
+          ),
         ),
       ),
     );

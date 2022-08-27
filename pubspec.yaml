@@ -17,6 +17,7 @@ dependencies:
 
   cupertino_icons: ^1.0.2
   audioplayers: ^1.0.1
+  font_awesome_flutter: ^10.1.0
 
 dev_dependencies:
   flutter_test:
@@ -34,6 +35,10 @@ flutter:
 
   assets:
     - assets/sounds/
+    - assets/images/
+    - assets/images/colors/
+    - assets/images/animals/
+    - assets/images/fruits/
 
   fonts:
     - family: PrincessSofia
