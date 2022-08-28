@@ -1,7 +1,5 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
 import '../models/gameItems.dart';
 
 class ColorGameScreen extends StatefulWidget {
@@ -53,21 +51,8 @@ class _ColorGameScreenState extends State<ColorGameScreen> {
           value: "yellow"),
       GameItem(
           image: "assets/images/colors/Blue.png", name: "Blue", value: "blue"),
-      // GameItem(
-      //     image: "assets/images/colors/Black.png",
-      //     name: "Black",
-      //     value: "black"),
-      // GameItem(
-      //     image: "assets/images/colors/Brown.png",
-      //     name: "Brown",
-      //     value: "brown"),
-      // GameItem(
-      //     image: "assets/images/colors/Orange.png",
-      //     name: "Orange",
-      //     value: "orange"),
     ];
 
-    // choice_B = ["Dog", "Cat", "Horse", "Kiwi Bird", "Cow", "Fish"];
     choice_B = List<GameItem>.from(choice_A);
 
     choice_A.shuffle();
@@ -79,7 +64,7 @@ class _ColorGameScreenState extends State<ColorGameScreen> {
 
   @override
   Widget build(BuildContext context) {
-    if (choice_A.length == 0) {
+    if (choice_A.isEmpty) {
       gameOver = true;
     }
     return Scaffold(
@@ -92,7 +77,7 @@ class _ColorGameScreenState extends State<ColorGameScreen> {
           initGame();
           setState(() {});
         },
-        child: Icon(Icons.refresh),
+        child: const Icon(Icons.refresh),
       ),
       body: Material(
         child: Expanded(
@@ -107,7 +92,7 @@ class _ColorGameScreenState extends State<ColorGameScreen> {
                       Column(
                         children: choice_A.map((choice) {
                           return Container(
-                            margin: EdgeInsets.all(8),
+                            margin: const EdgeInsets.all(8),
                             child: Draggable<GameItem>(
                               data: choice,
                               feedback: Text(
@@ -119,7 +104,7 @@ class _ColorGameScreenState extends State<ColorGameScreen> {
                                 ),
                               ),
                               childWhenDragging: Container(
-                                padding: EdgeInsets.all(12),
+                                padding: const EdgeInsets.all(12),
                                 height: 80,
                                 width: 150,
                                 child: Text(
@@ -132,7 +117,7 @@ class _ColorGameScreenState extends State<ColorGameScreen> {
                                 ),
                               ),
                               child: Container(
-                                padding: EdgeInsets.all(12),
+                                padding: const EdgeInsets.all(12),
                                 height: 80,
                                 width: 150,
                                 child: Text(
@@ -148,7 +133,7 @@ class _ColorGameScreenState extends State<ColorGameScreen> {
                           );
                         }).toList(),
                       ),
-                      Spacer(),
+                      const Spacer(),
                       Column(
                         children: choice_B.map((choice) {
                           return DragTarget<GameItem>(
@@ -186,7 +171,7 @@ class _ColorGameScreenState extends State<ColorGameScreen> {
                               height: 80,
                               width: 105,
                               alignment: Alignment.center,
-                              margin: EdgeInsets.all(8),
+                              margin: const EdgeInsets.all(8),
                               child: Image.asset(choice.image),
                             );
                           });
@@ -198,8 +183,8 @@ class _ColorGameScreenState extends State<ColorGameScreen> {
                   Column(
                     children: [
                       Text(
-                        score.toString() + "/60",
-                        style: TextStyle(fontSize: 50),
+                        "$score/60",
+                        style: const TextStyle(fontSize: 50),
                       ),
                       const Text(
                         "GameOver",
