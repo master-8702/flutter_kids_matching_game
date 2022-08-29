@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_kids_matching_game/screens/color_game_screen.dart';
 
 class GameListScreen extends StatefulWidget {
   const GameListScreen({Key? key}) : super(key: key);
@@ -11,45 +10,71 @@ class GameListScreen extends StatefulWidget {
 class _GameListScreenState extends State<GameListScreen> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        body: Column(
+    return Material(
+      child: Padding(
+        padding: const EdgeInsets.all(12.0),
+        child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            TextButton(
-              style: ElevatedButton.styleFrom(
-                primary: Colors.black,
-                shape: BeveledRectangleBorder(
-                    borderRadius: BorderRadius.circular(12)),
-              ),
-              onPressed: () {
-                Navigator.pushNamed(context, '/colorGame');
-              },
-              child: const Text("Color Game"),
+            const SizedBox(
+              height: 120,
             ),
-            TextButton(
-              style: ElevatedButton.styleFrom(
-                primary: Colors.black,
-                shape: BeveledRectangleBorder(
-                    borderRadius: BorderRadius.circular(12)),
+            const ElevatedButton(
+              onPressed: null,
+              child: Text(
+                "Master Games",
+                style: TextStyle(
+                  fontSize: 50,
+                  color: Colors.pink,
+                  backgroundColor: Colors.white,
+                ),
               ),
-              onPressed: () {
-                Navigator.pushNamed(context, '/animalGame');
-              },
-              child: const Text("Animal Game"),
             ),
-            TextButton(
-              style: ElevatedButton.styleFrom(
-                primary: Colors.black,
-                shape: BeveledRectangleBorder(
-                    borderRadius: BorderRadius.circular(12)),
+            const SizedBox(
+              height: 100,
+            ),
+            Expanded(
+              flex: 3,
+              child: Column(
+                children: [
+                  ElevatedButton(
+                    // style: ElevatedButton.styleFrom(
+                    //   elevation: 10,
+                    //   shape: BeveledRectangleBorder(
+                    //       borderRadius: BorderRadius.circular(120)),
+                    // ),
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/colorGame');
+                    },
+                    child: const Text("Color Game"),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  ElevatedButton(
+                    // style: ElevatedButton.styleFrom(
+                    //   elevation: 10,
+                    //   shape: BeveledRectangleBorder(
+                    //       borderRadius: BorderRadius.circular(120)),
+                    // ),
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/animalGame');
+                    },
+                    child: const Text("Animal Game"),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/fruitGame');
+                    },
+                    child: const Text("Fruit Game"),
+                  )
+                ],
               ),
-              onPressed: () {
-                Navigator.pushNamed(context, '/fruitGame');
-              },
-              child: const Text("Fruit Game"),
-            )
+            ),
           ],
         ),
       ),

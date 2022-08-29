@@ -77,7 +77,6 @@ class _FruitGameScreenState extends State<FruitGameScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Score $score'),
-        backgroundColor: Colors.pink,
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -173,8 +172,9 @@ class _FruitGameScreenState extends State<FruitGameScreen> {
                             return true;
                           }, builder: (context, acceptedItem, rejectedItem) {
                             return Container(
-                              color:
-                                  choice.accepting ? Colors.red : Colors.white,
+                              color: choice.accepting
+                                  ? Colors.pink[300]
+                                  : Colors.white,
                               height: 80,
                               width: 105,
                               alignment: Alignment.center,
@@ -206,14 +206,15 @@ class _FruitGameScreenState extends State<FruitGameScreen> {
                         child: ElevatedButton(
                           child: const Text(
                             "Try Again",
-                            style: TextStyle(
-                              fontSize: 30,
-                            ),
+                            // style: TextStyle(
+                            //   fontSize: 30,
+                            // ),
                           ),
                           onPressed: () {
                             initGame();
                             setState(() {});
                           },
+                          // style: Theme.of(context).elevatedButtonTheme,
                         ),
                       )
                     ],

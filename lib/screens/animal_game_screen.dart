@@ -71,7 +71,6 @@ class _AnimalGameScreenState extends State<AnimalGameScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Score $score'),
-        backgroundColor: Colors.pink,
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -168,7 +167,7 @@ class _AnimalGameScreenState extends State<AnimalGameScreen> {
                           }, builder: (context, acceptedItem, rejectedItem) {
                             return Container(
                               color: choice.accepting
-                                  ? Colors.pinkAccent
+                                  ? Colors.pink[300]
                                   : Colors.white,
                               height: 80,
                               width: 105,
@@ -201,9 +200,9 @@ class _AnimalGameScreenState extends State<AnimalGameScreen> {
                         child: ElevatedButton(
                           child: const Text(
                             "Try Again",
-                            style: TextStyle(
-                              fontSize: 30,
-                            ),
+                            // style: TextStyle(
+                            //   fontSize: 30,
+                            // ),
                           ),
                           onPressed: () {
                             initGame();
