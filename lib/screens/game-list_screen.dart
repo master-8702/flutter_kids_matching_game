@@ -12,13 +12,26 @@ class _GameListScreenState extends State<GameListScreen> {
   Widget build(BuildContext context) {
     return Material(
       child: Padding(
-        padding: const EdgeInsets.all(12.0),
+        padding: const EdgeInsets.all(20.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const SizedBox(
-              height: 120,
+            Expanded(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  IconButton(
+                    icon: const Icon(
+                      Icons.settings,
+                      size: 50,
+                    ),
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/setting');
+                    },
+                  ),
+                ],
+              ),
             ),
             const ElevatedButton(
               onPressed: null,
