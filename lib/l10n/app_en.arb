@@ -1,0 +1,158 @@
+{
+"language": "Language",
+"@language":{
+"description": "Current Language"},
+"gameOver":"Game Over",
+"@gameOver":{
+                        "description": "game status"
+                        },
+
+"tryAgain": "Try Again!",
+"@tryAgain":{
+                          "description": "play again"
+                          },
+"colorGame":"Color Game",
+"@colorGame":{
+              "description": "color game"
+                          },
+"animalGame":"Animal Game",
+"@animalGame":{
+              "description": "animal game"
+                          },
+"fruitGame":"Fruit Game",
+"@fruitGame":{
+              "description": "fruit game"
+              },
+ "lessonLanguage":"Lesson Language",
+    "@lessonLanguage":{
+     "description": "lesson language"
+     },
+
+ "gameLevel":"Game Level",
+     "@gameLevel":{
+      "description": "game level"
+      },
+
+
+      "themeColor":"Theme Color",
+           "@themeColor":{
+            "description": "theme color"
+            },
+   "score":"Score",
+
+     "@score":{
+       "description": "game score"
+               },
+   "setting":"Settings",
+   "@setting":{
+          "description": "game setting"
+                  },
+   "level1":"Level 1",
+   "@level1":{
+          "description": "game level 1"
+                  },
+   "level2":"Level 2",
+   "@level2":{
+          "description": "game level 2"
+                  },
+   "level3":"Level 3",
+   "@level3":{
+          "description": "game level 3"
+                  },
+   "pink":"Pink",
+   "@pink":{
+          "description": "theme color pink"
+                  },
+   "purple":"Purple",
+   "@purple":{
+          "description": "theme color purple"
+                  },
+   "orange":"Orange",
+   "@orange":{
+            "description": "theme color orange"
+                                    },
+"red": "Red",
+"@red":{
+            "description": "red color"
+                                    },
+"cyan": "Cyan",
+"@cyan":{
+            "description": "cyan color"
+                                    },
+"green": "Green",
+"@green":{
+                             "description": "green color "
+                                                     },
+"purple": "Purple",
+"@purple":{
+            "description": "purple color"
+                                    },
+"yellow": "Yellow",
+"@yellow":{
+            "description": "yellow color"
+                                    },
+"blue": "Blue",
+"@blue":{
+            "description": "blue color"
+                                    },
+
+"apple": "Apple",
+    "@apple":{
+                "description": "apple fruit"
+                                        },
+"apricot": "Apricot",
+    "@apricot":{
+                "description": "apricot fruit"
+                                        },
+"avocado": "Avocado",
+    "@avocado":{
+                "description": "avocado fruit"
+                                        },
+"banana": "Banana",
+    "@banana":{
+                "description": "banana fruit"
+                                        },
+"blueberries": "Blueberries",
+    "@blueberries":{
+                "description": "blueberries fruit"
+                                        },
+"cherry": "Cherry",
+    "@cherry":{
+                "description": "cherry fruit"
+                                        },
+
+
+"doe": "Doe",
+    "@doe":{
+                    "description": "doe animal"
+                                            },
+"elephant": "Elephant",
+    "@elephant":{
+                    "description": "elephant animal"
+                                            },
+"ewe": "Ewe",
+    "@ewe":{
+                    "description": "ewe animal"
+                                            },
+"giraffe": "Giraffe",
+    "@giraffe":{
+                    "description": "giraffe animal"
+                                            },
+"mule": "Mule",
+    "@mule":{
+                    "description": "mule animal"
+                                            },
+"ostrich": "Ostrich",
+    "@ostrich":{
+                    "description": "ostrich animal"
+                                            }
+
+
+
+
+
+
+
+
+
+}

@@ -1,7 +1,7 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
-
 import '../models/gameItems.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class FruitGameScreen extends StatefulWidget {
   const FruitGameScreen({Key? key}) : super(key: key);
@@ -76,7 +76,7 @@ class _FruitGameScreenState extends State<FruitGameScreen> {
     }
     return Scaffold(
       appBar: AppBar(
-        title: Text('Score $score'),
+        title: Text('${AppLocalizations.of(context)!.score} :  $score'),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -195,18 +195,18 @@ class _FruitGameScreenState extends State<FruitGameScreen> {
                         "$score/60",
                         style: const TextStyle(fontSize: 50),
                       ),
-                      const Text(
-                        "GameOver",
-                        style: TextStyle(
+                      Text(
+                        AppLocalizations.of(context)!.gameOver,
+                        style: const TextStyle(
                             color: Colors.red,
                             fontWeight: FontWeight.bold,
                             fontSize: 40),
                       ),
                       Center(
                         child: ElevatedButton(
-                          child: const Text(
-                            "Try Again",
-                            // style: TextStyle(
+                          child: Text(
+                            AppLocalizations.of(context)!
+                                .tryAgain, // style: TextStyle(
                             //   fontSize: 30,
                             // ),
                           ),

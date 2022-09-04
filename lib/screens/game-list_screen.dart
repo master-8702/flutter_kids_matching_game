@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class GameListScreen extends StatefulWidget {
   const GameListScreen({Key? key}) : super(key: key);
@@ -60,7 +61,9 @@ class _GameListScreenState extends State<GameListScreen> {
                     onPressed: () {
                       Navigator.pushNamed(context, '/colorGame');
                     },
-                    child: const Text("Color Game"),
+                    child: Text(
+                      AppLocalizations.of(context)!.colorGame,
+                    ),
                   ),
                   const SizedBox(
                     height: 20,
@@ -74,7 +77,9 @@ class _GameListScreenState extends State<GameListScreen> {
                     onPressed: () {
                       Navigator.pushNamed(context, '/animalGame');
                     },
-                    child: const Text("Animal Game"),
+                    child: Text(
+                      AppLocalizations.of(context)!.animalGame,
+                    ),
                   ),
                   const SizedBox(
                     height: 20,
@@ -83,7 +88,9 @@ class _GameListScreenState extends State<GameListScreen> {
                     onPressed: () {
                       Navigator.pushNamed(context, '/fruitGame');
                     },
-                    child: const Text("Fruit Game"),
+                    child: Text(
+                      AppLocalizations.of(context)!.fruitGame,
+                    ),
                   )
                 ],
               ),

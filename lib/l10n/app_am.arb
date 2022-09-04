@@ -1,0 +1,45 @@
+{
+"language": "ቋንቋ",
+"gameOver":"ጨዋታው አልቋል",
+"tryAgain": "እንደገና ይሞክሩ!",
+"colorGame":"የቀለማት ጨዋታ",
+"animalGame":"የእንስሳት ጨዋታ",
+"fruitGame":"የፍራፍሬ ጨዋታ",
+"lessonLanguage":"የመማሪያ ቋንቋ",
+"gameLevel":"የጨዋታ ደረጃ",
+"themeColor":"የመተግበሪያው ቀለም",
+"score":"ውጤት",
+"setting":"መቼት",
+"level1":"ደረጃ 1",
+"level2":"ደረጃ 2",
+"level3":"ደረጃ 3",
+"pink":"ሮዝ",
+"purple":"ሐምራዊ",
+"orange":"ብርቱካናማ",
+"red": "ቀይ",
+"cyan": "ዉሀ ሰማያዊ",
+"green": "አረንጓዴ",
+"purple": "ሐምራዊ",
+"yellow": "ቢጫ",
+"blue": "ሰማያዊ",
+
+"apple": "ፖም",
+"apricot": "አፕሪኮት",
+"avocado": "አቮካዶ",
+"banana": "ሙዝ",
+"blueberries": "ሰማያዊ እንጆሪ",
+"cherry": "ቼሪ",
+
+"doe": "ሴት አጋዘን",
+"elephant": "ዝሆን",
+"ewe": "ሴት በግ",
+"giraffe": "ቀጭኔ",
+"mule": "በቅሎ",
+"ostrich": "ሰጎን"
+
+
+
+
+
+
+}

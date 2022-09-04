@@ -1,0 +1,44 @@
+{
+"language": "لغة",
+"gameOver":"انتهت اللعبة",
+"tryAgain": "حاول ثانية!",
+"colorGame":"لعبة اللون",
+"animalGame":"لعبة الحيوان",
+"fruitGame":"لعبة الفاكهة",
+"lessonLanguage":"لغة الدرس",
+"gameLevel":"مستوى اللعبة",
+"themeColor":"لون السمة",
+"score":"نتيجة",
+"setting":"الإعدادات",
+"level1":"المستوى 1",
+"level2":"المستوى 2",
+"level3":"المستوى 3",
+"pink":"زهري",
+"purple":"ليلكي",
+"orange":"لون برتقالي",
+
+"red": "أحمر",
+"cyan": "ازرق سماوي",
+"green": "أخضر",
+"purple": "ليلكي",
+"yellow": "الأصفر",
+"blue": "أزرق",
+
+
+"apple": "تفاح",
+"apricot": "مشمش",
+"avocado": "أفوكادو",
+"banana": "موز",
+"blueberries": "توت",
+"cherry": "كرز",
+
+
+"doe": "ظبية",
+"elephant": "الفيل",
+"ewe": "نعجة",
+"giraffe": "زرافة",
+"mule": "بغل",
+"ostrich": "نعامة"
+
+
+}
