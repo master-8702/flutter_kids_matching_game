@@ -23,41 +23,47 @@ class _FruitGameScreenState extends State<FruitGameScreen> {
   @override
   void initState() {
     super.initState();
+  }
 
+  @override
+  void didChangeDependencies() {
     initGame();
+    // TODO: implement didChangeDependencies
+    super.didChangeDependencies();
   }
 
 //to initialize or restart the game
 
   void initGame() {
+    final localization = AppLocalizations.of(context);
     score = 0;
     gameOver = false;
 
     choice_A = [
       GameItem(
           image: "assets/images/fruits/Apple.png",
-          name: "Apple",
-          value: "apple"),
+          name: localization!.apple,
+          value: localization!.apple),
       GameItem(
           image: "assets/images/fruits/Apricot.png",
-          name: "Apricot",
-          value: "apricot"),
+          name: localization.apricot,
+          value: localization.apricot),
       GameItem(
           image: "assets/images/fruits/Avocado.png",
-          name: "Avocado",
-          value: "avocado"),
+          name: localization.avocado,
+          value: localization.avocado),
       GameItem(
           image: "assets/images/fruits/Banana.png",
-          name: "Banana",
-          value: "banana"),
+          name: localization.banana,
+          value: localization.banana),
       GameItem(
           image: "assets/images/fruits/Blueberries.png",
-          name: "Blueberries",
-          value: "blueberries"),
+          name: localization.blueberries,
+          value: localization.blueberries),
       GameItem(
           image: "assets/images/fruits/Cherry.png",
-          name: "Cherry",
-          value: "cherry"),
+          name: localization.cherry,
+          value: localization.cherry),
     ];
 
     choice_B = List<GameItem>.from(choice_A);

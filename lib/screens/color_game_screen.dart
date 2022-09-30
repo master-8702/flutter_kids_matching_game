@@ -23,35 +23,47 @@ class _ColorGameScreenState extends State<ColorGameScreen> {
   @override
   void initState() {
     super.initState();
+  }
 
+  @override
+  void didChangeDependencies() {
     initGame();
+    // TODO: implement didChangeDependencies
+    super.didChangeDependencies();
   }
 
 //to initialize or restart the game
 
   void initGame() {
+    final localization = AppLocalizations.of(context);
     score = 0;
     gameOver = false;
 
     choice_A = [
       GameItem(
-          image: "assets/images/colors/Red.png", name: "Red", value: "red"),
+          image: "assets/images/colors/Red.png",
+          name: localization!.red,
+          value: localization!.red),
       GameItem(
-          image: "assets/images/colors/Cyan.png", name: "Cyan", value: "cyan"),
+          image: "assets/images/colors/Cyan.png",
+          name: localization!.cyan,
+          value: localization!.cyan),
       GameItem(
           image: "assets/images/colors/Green.png",
-          name: "Green",
-          value: "green"),
+          name: localization!.green,
+          value: localization!.green),
       GameItem(
           image: "assets/images/colors/Purple.png",
-          name: "Purple",
-          value: "purple"),
+          name: localization!.purple,
+          value: localization!.purple),
       GameItem(
           image: "assets/images/colors/Yellow.png",
-          name: "Yellow",
-          value: "yellow"),
+          name: localization!.yellow,
+          value: localization!.yellow),
       GameItem(
-          image: "assets/images/colors/Blue.png", name: "Blue", value: "blue"),
+          image: "assets/images/colors/Blue.png",
+          name: localization!.blue,
+          value: localization!.blue),
     ];
 
     choice_B = List<GameItem>.from(choice_A);

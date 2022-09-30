@@ -6,11 +6,13 @@ import 'package:flutter_kids_matching_game/screens/fruit_game_screen.dart';
 import 'package:flutter_kids_matching_game/screens/game-list_screen.dart';
 import 'package:flutter_kids_matching_game/screens/setting_page_screen.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:provider/provider.dart';
 import 'l10n/l10n.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-void main() {
+void main() async {
+  await GetStorage.init();
   WidgetsFlutterBinding.ensureInitialized();
   runApp(MyApp());
 }

@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import '../models/gameItems.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import '../models/test.dart';
+
 class AnimalGameScreen extends StatefulWidget {
   const AnimalGameScreen({Key? key}) : super(key: key);
 
@@ -23,35 +25,52 @@ class _AnimalGameScreenState extends State<AnimalGameScreen> {
   @override
   void initState() {
     super.initState();
+  }
 
+  @override
+  void didChangeDependencies() {
     initGame();
+
+    // TODO: implement didChangeDependencies
+    super.didChangeDependencies();
   }
 
 //to initialize or restart the game
 
   void initGame() {
+    final localization = AppLocalizations.of(context);
+
     score = 0;
     gameOver = false;
 
     choice_A = [
       GameItem(
-          image: "assets/images/animals/Doe.png", name: "Doe", value: "doe"),
+        image: "assets/images/animals/Doe.png",
+        name: localization!.doe,
+        value: localization!.doe,
+      ),
       GameItem(
           image: "assets/images/animals/Elephant.png",
-          name: "Elephant",
-          value: "elephant"),
+          name: localization!.elephant,
+          value: localization!.elephant),
       GameItem(
-          image: "assets/images/animals/Ewe.png", name: "Ewe", value: "ewe"),
+        image: "assets/images/animals/Ewe.png",
+        name: localization!.ewe,
+        value: localization!.ewe,
+      ),
       GameItem(
           image: "assets/images/animals/Giraffe.png",
-          name: "Giraffe",
-          value: "giraffe"),
+          name: localization!.giraffe,
+          value: localization!.giraffe),
       GameItem(
-          image: "assets/images/animals/Mule.png", name: "Mule", value: "mule"),
+        image: "assets/images/animals/Mule.png",
+        name: localization!.mule,
+        value: localization!.mule,
+      ),
       GameItem(
           image: "assets/images/animals/Ostrich.png",
-          name: "Ostrich",
-          value: "ostrich"),
+          name: localization!.ostrich,
+          value: localization!.ostrich),
     ];
 
     choice_B = List<GameItem>.from(choice_A);
@@ -74,7 +93,6 @@ class _AnimalGameScreenState extends State<AnimalGameScreen> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          initGame();
           setState(() {});
         },
         child: const Icon(Icons.refresh),
@@ -86,6 +104,7 @@ class _AnimalGameScreenState extends State<AnimalGameScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
+                // choice_A.shuffle(),
                 if (!gameOver)
                   Row(
                     children: <Widget>[
@@ -133,6 +152,7 @@ class _AnimalGameScreenState extends State<AnimalGameScreen> {
                           );
                         }).toList(),
                       ),
+                      // GameLists(),
                       const Spacer(),
                       Column(
                         children: choice_B.map((choice) {
