@@ -27,6 +27,18 @@
     "@lessonLanguage":{
      "description": "lesson language"
      },
+     "amharic":"አማርኛ",
+         "@amharic":{
+          "description": "አማርኛ"
+          },
+      "arabic":"عربى",
+              "@arabic":{
+               "description": "عربى"
+               },
+       "english":"English",
+                   "@english":{
+                    "description": "english"
+                    },
 
  "gameLevel":"Game Level",
      "@gameLevel":{

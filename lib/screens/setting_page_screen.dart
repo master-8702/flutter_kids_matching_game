@@ -13,11 +13,31 @@ class SettingPageScreen extends StatefulWidget {
 }
 
 class _SettingPageScreenState extends State<SettingPageScreen> {
-  String selectedLanguage = "አማርኛ";
-  String selectedLevel = "ደረጃ 1";
-  String selectedThemeColor = "ሮዝ";
-
+  late String selectedLanguage;
+  late String selectedLevel;
+  late String selectedThemeColor;
   late LocalProvider provider;
+  final box = GetStorage();
+
+  @override
+  void initState() {
+    // for later to save app state
+    box.writeIfNull('selectedLanguage', 'English');
+    box.writeIfNull('selectedLevel', 'Level 1');
+    box.writeIfNull('selectedThemeColor', 'Pink');
+
+//without saving state | state will reset everytime app restarts
+//     box.writeIfNull('selectedLanguage', 'English');
+//     box.write('selectedLevel', 'Level 1');
+//     box.write('selectedThemeColor', 'Pink');
+
+    selectedLanguage = box.read('selectedLanguage');
+    selectedLevel = box.read('selectedLevel');
+    selectedThemeColor = box.read('selectedThemeColor');
+
+    // TODO: implement initState
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,6 +52,7 @@ class _SettingPageScreenState extends State<SettingPageScreen> {
       AppLocalizations.of(context)!.purple,
       AppLocalizations.of(context)!.orange
     ];
+
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -66,26 +87,28 @@ class _SettingPageScreenState extends State<SettingPageScreen> {
                     ),
                     onChanged: (String? newValue) {
                       setState(() {
-                        // Navigator.popAndPushNamed(context, '/setting');
                         provider =
                             Provider.of<LocalProvider>(context, listen: false);
-                        selectedLanguage = newValue!;
-                        // selectedLevel = provider.;
-                        // selectedThemeColor = "";
+                        box.write('selectedLanguage', newValue);
+
+                        selectedLanguage = box.read('selectedLanguage');
 
                         if (selectedLanguage == 'አማርኛ') {
                           provider.setLocale(const Locale('am'));
-                          selectedLevel = "ደረጃ 1";
-                          selectedThemeColor = "ሮዝ";
+                          // selectedLevel = AppLocalizations.of(context)!.level1;
+                          box.write('selectedLevel', 'ደረጃ 1');
+                          box.write('selectedThemeColor', 'ሮዝ');
                         } else if (selectedLanguage == 'English') {
                           provider.setLocale(const Locale('en'));
-                          selectedLevel = "Level 1";
-                          selectedThemeColor = "Pink";
+                          box.write('selectedLevel', 'Level 1');
+                          box.write('selectedThemeColor', 'Pink');
                         } else {
                           provider.setLocale(const Locale('ar'));
-                          selectedLevel = "المستوى 1";
-                          selectedThemeColor = "زهري";
+                          box.write('selectedLevel', 'المستوى 1');
+                          box.write('selectedThemeColor', 'زهري');
                         }
+                        selectedLevel = box.read('selectedLevel');
+                        selectedThemeColor = box.read('selectedThemeColor');
                       });
                     },
                     items:
@@ -122,7 +145,8 @@ class _SettingPageScreenState extends State<SettingPageScreen> {
                     ),
                     onChanged: (String? newValue) {
                       setState(() {
-                        selectedLevel = newValue!;
+                        box.write('selectedLevel', newValue);
+                        selectedLevel = box.read('selectedLevel');
                       });
                     },
                     items: gameLevels
@@ -159,7 +183,8 @@ class _SettingPageScreenState extends State<SettingPageScreen> {
                     ),
                     onChanged: (String? newValue) {
                       setState(() {
-                        selectedThemeColor = newValue!;
+                        box.write('selectedThemeColor', newValue);
+                        selectedThemeColor = box.read('selectedThemeColor');
                       });
                     },
                     items: themeColors

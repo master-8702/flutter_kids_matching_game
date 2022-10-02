@@ -3,7 +3,7 @@ import 'package:flutter_kids_matching_game/l10n/l10n.dart';
 
 class LocalProvider extends ChangeNotifier {
   late Locale? _local =
-      Locale('am'); // to store the selected locale or language;
+      Locale('en'); // to store the selected locale or language;
 
   // then we will define getter and setter for the (selected)language
   Locale? get local => _local;

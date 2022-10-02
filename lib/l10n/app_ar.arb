@@ -6,6 +6,11 @@
 "animalGame":"لعبة الحيوان",
 "fruitGame":"لعبة الفاكهة",
 "lessonLanguage":"لغة الدرس",
+"amharic":"አማርኛ",
+"arabic":"عربى",
+"english":"English",
+
+
 "gameLevel":"مستوى اللعبة",
 "themeColor":"لون السمة",
 "score":"نتيجة",
