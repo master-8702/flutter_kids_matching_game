@@ -130,14 +130,14 @@ class _FruitGameScreenState extends State<FruitGameScreen> {
                               ),
                               child: Container(
                                 padding: const EdgeInsets.all(12),
-                                height: 80,
+                                height: 90,
                                 width: 150,
                                 child: Text(
                                   choice.name,
                                   style: const TextStyle(
                                     color: Colors.black,
                                     fontWeight: FontWeight.bold,
-                                    fontSize: 40,
+                                    fontSize: 25,
                                   ),
                                 ),
                               ),
@@ -181,7 +181,7 @@ class _FruitGameScreenState extends State<FruitGameScreen> {
                               color: choice.accepting
                                   ? Colors.pink[300]
                                   : Colors.white,
-                              height: 80,
+                              height: 90,
                               width: 105,
                               alignment: Alignment.center,
                               margin: const EdgeInsets.all(8),

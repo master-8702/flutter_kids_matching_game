@@ -31,9 +31,9 @@
          "@amharic":{
           "description": "አማርኛ"
           },
-      "arabic":"عربى",
+      "arabic":"العربية",
               "@arabic":{
-               "description": "عربى"
+               "description": "العربية"
                },
        "english":"English",
                    "@english":{

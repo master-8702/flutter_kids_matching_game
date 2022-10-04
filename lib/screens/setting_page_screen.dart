@@ -16,24 +16,19 @@ class _SettingPageScreenState extends State<SettingPageScreen> {
   late String selectedLanguage;
   late String selectedLevel;
   late String selectedThemeColor;
+  late String selectedThemeCode;
   late LocalProvider provider;
   final box = GetStorage();
 
   @override
   void initState() {
-    // for later to save app state
+    // The following variables will be used to save the  app state like selected language, theme color and game level
+    // we will read them(the sates) from local storage if there is any but if the app runs for the first time (there are no any states)
+    // we will assign initial values
     box.writeIfNull('selectedLanguage', 'English');
     box.writeIfNull('selectedLevel', 'Level 1');
     box.writeIfNull('selectedThemeColor', 'Pink');
-
-//without saving state | state will reset everytime app restarts
-//     box.writeIfNull('selectedLanguage', 'English');
-//     box.write('selectedLevel', 'Level 1');
-//     box.write('selectedThemeColor', 'Pink');
-
-    selectedLanguage = box.read('selectedLanguage');
-    selectedLevel = box.read('selectedLevel');
-    selectedThemeColor = box.read('selectedThemeColor');
+    box.writeIfNull('selectedThemeCode', '0');
 
     // TODO: implement initState
     super.initState();
@@ -52,6 +47,26 @@ class _SettingPageScreenState extends State<SettingPageScreen> {
       AppLocalizations.of(context)!.purple,
       AppLocalizations.of(context)!.orange
     ];
+
+    String tempLanguage = box.read('selectedLanguage');
+    String tempLevel = box.read('selectedLevel');
+    int selectedThemeCode = box.read('selectedThemeCode');
+
+    selectedLanguage = tempLanguage == "አማርኛ"
+        ? AppLocalizations.of(context)!.amharic
+        : tempLanguage == "English"
+            ? AppLocalizations.of(context)!.english
+            : AppLocalizations.of(context)!.arabic;
+    selectedLevel = tempLevel.contains('1') == true
+        ? AppLocalizations.of(context)!.level1
+        : tempLevel.contains('2') == true
+            ? AppLocalizations.of(context)!.level2
+            : AppLocalizations.of(context)!.level3;
+    selectedThemeColor = selectedThemeCode == 0
+        ? AppLocalizations.of(context)!.pink
+        : selectedThemeCode == 1
+            ? AppLocalizations.of(context)!.purple
+            : AppLocalizations.of(context)!.orange;
 
     return Scaffold(
       appBar: AppBar(
@@ -95,17 +110,13 @@ class _SettingPageScreenState extends State<SettingPageScreen> {
 
                         if (selectedLanguage == 'አማርኛ') {
                           provider.setLocale(const Locale('am'));
-                          // selectedLevel = AppLocalizations.of(context)!.level1;
-                          box.write('selectedLevel', 'ደረጃ 1');
-                          box.write('selectedThemeColor', 'ሮዝ');
-                        } else if (selectedLanguage == 'English') {
-                          provider.setLocale(const Locale('en'));
-                          box.write('selectedLevel', 'Level 1');
-                          box.write('selectedThemeColor', 'Pink');
-                        } else {
+                          box.write('selectedLocale', 'am');
+                        } else if (selectedLanguage == 'العربية') {
                           provider.setLocale(const Locale('ar'));
-                          box.write('selectedLevel', 'المستوى 1');
-                          box.write('selectedThemeColor', 'زهري');
+                          box.write('selectedLocale', 'ar');
+                        } else {
+                          provider.setLocale(const Locale('en'));
+                          box.write('selectedLocale', 'en');
                         }
                         selectedLevel = box.read('selectedLevel');
                         selectedThemeColor = box.read('selectedThemeColor');
@@ -184,7 +195,10 @@ class _SettingPageScreenState extends State<SettingPageScreen> {
                     onChanged: (String? newValue) {
                       setState(() {
                         box.write('selectedThemeColor', newValue);
+                        box.write('selectedThemeCode',
+                            themeColors.indexOf(newValue!));
                         selectedThemeColor = box.read('selectedThemeColor');
+                        selectedThemeCode = box.read('selectedThemeCode');
                       });
                     },
                     items: themeColors

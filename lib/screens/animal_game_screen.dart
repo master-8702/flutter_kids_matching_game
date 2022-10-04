@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import '../models/gameItems.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import '../models/test.dart';
-
 class AnimalGameScreen extends StatefulWidget {
   const AnimalGameScreen({Key? key}) : super(key: key);
 
@@ -144,7 +142,7 @@ class _AnimalGameScreenState extends State<AnimalGameScreen> {
                                   style: const TextStyle(
                                     color: Colors.black,
                                     fontWeight: FontWeight.bold,
-                                    fontSize: 40,
+                                    fontSize: 25,
                                   ),
                                 ),
                               ),

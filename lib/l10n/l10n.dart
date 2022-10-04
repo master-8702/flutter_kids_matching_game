@@ -17,7 +17,7 @@ class L10n {
       case 'ar':
         return "العربية";
       default:
-        return "አማርኛ";
+        return "English";
     }
   }
 }

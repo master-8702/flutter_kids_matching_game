@@ -137,7 +137,7 @@ class _ColorGameScreenState extends State<ColorGameScreen> {
                                   style: const TextStyle(
                                     color: Colors.black,
                                     fontWeight: FontWeight.bold,
-                                    fontSize: 40,
+                                    fontSize: 25,
                                   ),
                                 ),
                               ),
