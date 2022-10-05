@@ -1,7 +1,10 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../models/gameItems.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import '../provider/settings_provider.dart';
 
 class ColorGameScreen extends StatefulWidget {
   const ColorGameScreen({Key? key}) : super(key: key);
@@ -77,6 +80,8 @@ class _ColorGameScreenState extends State<ColorGameScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<SettingsProvider>(context);
+
     if (choice_A.isEmpty) {
       gameOver = true;
     }
@@ -179,7 +184,7 @@ class _ColorGameScreenState extends State<ColorGameScreen> {
                           }, builder: (context, acceptedItem, rejectedItem) {
                             return Container(
                               color: choice.accepting
-                                  ? Colors.pink[300]
+                                  ? provider.themeColor as Color
                                   : Colors.white,
                               height: 80,
                               width: 105,

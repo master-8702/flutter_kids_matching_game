@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_kids_matching_game/l10n/l10n.dart';
-import 'package:flutter_kids_matching_game/provider/locale_provider.dart';
+import 'package:flutter_kids_matching_game/provider/settings_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:get_storage/get_storage.dart';
@@ -17,7 +17,7 @@ class _SettingPageScreenState extends State<SettingPageScreen> {
   late String selectedLevel;
   late String selectedThemeColor;
   late String selectedThemeCode;
-  late LocalProvider provider;
+  late SettingsProvider provider;
   final box = GetStorage();
 
   @override
@@ -102,8 +102,8 @@ class _SettingPageScreenState extends State<SettingPageScreen> {
                     ),
                     onChanged: (String? newValue) {
                       setState(() {
-                        provider =
-                            Provider.of<LocalProvider>(context, listen: false);
+                        provider = Provider.of<SettingsProvider>(context,
+                            listen: false);
                         box.write('selectedLanguage', newValue);
 
                         selectedLanguage = box.read('selectedLanguage');
@@ -186,7 +186,7 @@ class _SettingPageScreenState extends State<SettingPageScreen> {
                     value: selectedThemeColor,
                     icon: const Icon(Icons.color_lens),
                     iconSize: 24,
-                    elevation: 16,
+                    elevation: 6,
                     style: const TextStyle(color: Colors.deepPurple),
                     underline: Container(
                       height: 2,
@@ -199,6 +199,9 @@ class _SettingPageScreenState extends State<SettingPageScreen> {
                             themeColors.indexOf(newValue!));
                         selectedThemeColor = box.read('selectedThemeColor');
                         selectedThemeCode = box.read('selectedThemeCode');
+                        provider = Provider.of<SettingsProvider>(context,
+                            listen: false);
+                        provider.setTheme(themeColors.indexOf(newValue));
                       });
                     },
                     items: themeColors

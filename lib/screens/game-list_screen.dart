@@ -11,91 +11,73 @@ class GameListScreen extends StatefulWidget {
 class _GameListScreenState extends State<GameListScreen> {
   @override
   Widget build(BuildContext context) {
-    return Material(
-      child: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Expanded(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  IconButton(
-                    icon: const Icon(
-                      Icons.settings,
-                      size: 50,
-                    ),
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/setting');
-                    },
-                  ),
-                ],
+    return Scaffold(
+      appBar: AppBar(
+          title: const Text(
+            "Master Games",
+            style: TextStyle(fontSize: 40),
+          ),
+          centerTitle: true,
+          actions: [
+            IconButton(
+              icon: const Icon(
+                Icons.settings,
+                size: 50,
               ),
+              onPressed: () {
+                Navigator.pushNamed(context, '/setting');
+              },
             ),
-            const ElevatedButton(
-              onPressed: null,
-              child: Text(
-                "Master Games",
-                style: TextStyle(
-                  fontSize: 50,
-                  color: Colors.pink,
-                  backgroundColor: Colors.white,
+          ]),
+      body: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ElevatedButton(
+                // style: ElevatedButton.styleFrom(
+                //   elevation: 10,
+                //   shape: BeveledRectangleBorder(
+                //       borderRadius: BorderRadius.circular(120)),
+                // ),
+                onPressed: () {
+                  Navigator.pushNamed(context, '/colorGame');
+                },
+                child: Text(
+                  AppLocalizations.of(context)!.colorGame,
                 ),
               ),
-            ),
-            const SizedBox(
-              height: 100,
-            ),
-            Expanded(
-              flex: 3,
-              child: Column(
-                children: [
-                  ElevatedButton(
-                    // style: ElevatedButton.styleFrom(
-                    //   elevation: 10,
-                    //   shape: BeveledRectangleBorder(
-                    //       borderRadius: BorderRadius.circular(120)),
-                    // ),
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/colorGame');
-                    },
-                    child: Text(
-                      AppLocalizations.of(context)!.colorGame,
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  ElevatedButton(
-                    // style: ElevatedButton.styleFrom(
-                    //   elevation: 10,
-                    //   shape: BeveledRectangleBorder(
-                    //       borderRadius: BorderRadius.circular(120)),
-                    // ),
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/animalGame');
-                    },
-                    child: Text(
-                      AppLocalizations.of(context)!.animalGame,
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/fruitGame');
-                    },
-                    child: Text(
-                      AppLocalizations.of(context)!.fruitGame,
-                    ),
-                  )
-                ],
+              const SizedBox(
+                height: 20,
               ),
-            ),
-          ],
+              ElevatedButton(
+                // style: ElevatedButton.styleFrom(
+                //   elevation: 10,
+                //   shape: BeveledRectangleBorder(
+                //       borderRadius: BorderRadius.circular(120)),
+                // ),
+                onPressed: () {
+                  Navigator.pushNamed(context, '/animalGame');
+                },
+                child: Text(
+                  AppLocalizations.of(context)!.animalGame,
+                ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/fruitGame');
+                },
+                child: Text(
+                  AppLocalizations.of(context)!.fruitGame,
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );

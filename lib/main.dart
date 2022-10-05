@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_kids_matching_game/provider/locale_provider.dart';
+import 'package:flutter_kids_matching_game/provider/settings_provider.dart';
 import 'package:flutter_kids_matching_game/screens/animal_game_screen.dart';
 import 'package:flutter_kids_matching_game/screens/color_game_screen.dart';
 import 'package:flutter_kids_matching_game/screens/fruit_game_screen.dart';
@@ -24,19 +24,25 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
       create: (BuildContext context) {
-        return LocalProvider();
+        return SettingsProvider();
       },
       builder: (context, child) {
-        final provider = Provider.of<LocalProvider>(context);
+        final provider = Provider.of<SettingsProvider>(context);
 
         return MaterialApp(
           theme: ThemeData(
               fontFamily: 'Sunnyspells',
-              colorScheme: const ColorScheme(
-                  primary: Colors.pinkAccent,
+              colorScheme: ColorScheme(
+                  primary: provider.themeColor as Color,
                   onError: Colors.red,
                   onBackground: Colors.white,
                   onSecondary: Colors.white,
@@ -46,24 +52,24 @@ class _MyAppState extends State<MyApp> {
                   brightness: Brightness.light,
                   onSurface: Colors.black,
                   surface: Colors.grey,
-                  secondary: Colors.pink),
+                  secondary: provider.themeColor as Color),
               elevatedButtonTheme: ElevatedButtonThemeData(
                 style: ElevatedButton.styleFrom(
-                    elevation: 10,
-                    shape: BeveledRectangleBorder(
-                        borderRadius: BorderRadius.circular(10)),
-                    textStyle: const TextStyle(
-                        fontSize: 40, fontStyle: FontStyle.italic),
-                    primary: Colors.pink),
+                  elevation: 10,
+                  shape: BeveledRectangleBorder(
+                      borderRadius: BorderRadius.circular(10)),
+                  textStyle: const TextStyle(
+                      fontSize: 40, fontStyle: FontStyle.italic),
+                ),
               ),
-              buttonTheme: ButtonThemeData()),
+              buttonTheme: const ButtonThemeData()),
           initialRoute: '/',
           routes: {
-            '/': (context) => GameListScreen(),
-            '/colorGame': (context) => ColorGameScreen(),
-            '/animalGame': (context) => AnimalGameScreen(),
-            '/fruitGame': (context) => FruitGameScreen(),
-            '/setting': (context) => SettingPageScreen(),
+            '/': (context) => const GameListScreen(),
+            '/colorGame': (context) => const ColorGameScreen(),
+            '/animalGame': (context) => const AnimalGameScreen(),
+            '/fruitGame': (context) => const FruitGameScreen(),
+            '/setting': (context) => const SettingPageScreen(),
           },
           supportedLocales: L10n.all,
           localizationsDelegates: const [
