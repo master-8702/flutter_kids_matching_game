@@ -67,10 +67,18 @@
    "@level2":{
           "description": "game level 2"
                   },
-   "level3":"Level 3",
+       "level3":"Level 3",
    "@level3":{
           "description": "game level 3"
                   },
+    "level4":"Level 4",
+      "@level4":{
+             "description": "game level 4"
+                     },
+      "level5":"Level 5",
+        "@level5":{
+               "description": "game level 5"
+                       },
    "pink":"Pink",
    "@pink":{
           "description": "theme color pink"
@@ -93,7 +101,7 @@
                                     },
 "green": "Green",
 "@green":{
-                             "description": "green color "
+   "description": "green color "
                                                      },
 "purple": "Purple",
 "@purple":{
@@ -107,6 +115,115 @@
 "@blue":{
             "description": "blue color"
                                     },
+"aqua": "Aqua",
+"@blue":{
+            "description": "blue color"
+                                    },
+"beige": "Beige",
+"@beige":{
+            "description": "beige color"
+                                    },
+
+"black": "Black",
+"@black":{
+            "description": "black color"
+                                    },
+"bronze": "Bronze",
+"@bronze":{
+            "description": "bronze color"
+                                    },
+"burgundy": "Burgundy",
+"@burgundy":{
+            "description": "burgundy color"
+                                    },
+"coral": "Coral",
+"@coral":{
+            "description": "coral color"
+                                    },
+"cream": "Cream",
+"@cream":{
+            "description": "cream color"
+                                    },
+"cyan": "Cyan",
+"@cyan":{
+            "description": "cyan color"
+                                    },
+"golden": "Golden",
+"@golden":{
+            "description": "golden color"
+                                    },
+"gray": "Gray",
+"@gray":{
+            "description": "gray color"
+                                    },
+"lavender": "Lavender",
+"@lavender":{
+            "description": "lavender color"
+                                    },
+"lime": "Lime",
+"@lime":{
+            "description": "lime color"
+                                    },
+"magenta": "Magenta",
+"@magenta":{
+            "description": "magenta color"
+                                    },
+"maroon": "Maroon",
+"@maroon":{
+            "description": "maroon color"
+                                    },
+"mauve": "Mauve",
+"@mauve":{
+            "description": "mauve color"
+                                    },
+"mustard": "Mustard",
+"@mustard":{
+            "description": "mustard color"
+                                    },
+"navyblue": "Navy Blue",
+"@navyblue":{
+            "description": "navy blue color"
+                                    },
+"olive": "Olive",
+"@olive":{
+            "description": "olive color"
+                                    },
+"orange": "Orange",
+"@orange":{
+            "description": "orange color"
+                                    },
+"peach": "Peach",
+"@peach":{
+            "description": "peach color"
+                                    },
+"pink": "Pink",
+"@pink":{
+            "description": "pink color"
+                                    },
+"rust": "Rust",
+"@rust":{
+            "description": "rust color"
+                                    },
+"silver": "Silver",
+"@silver":{
+            "description": "silver color"
+                                    },
+
+"tan": "Tan",
+"@tan":{
+            "description": "tan color"
+                                    },
+"teal": "Teal",
+"@teal":{
+            "description": "teal color"
+                                    },
+"white": "White",
+"@white":{
+            "description": "white color"
+                                    },
+
+
+
 
 "apple": "Apple",
     "@apple":{

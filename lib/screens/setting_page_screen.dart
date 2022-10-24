@@ -39,7 +39,9 @@ class _SettingPageScreenState extends State<SettingPageScreen> {
     List<String> gameLevels = [
       AppLocalizations.of(context)!.level1,
       AppLocalizations.of(context)!.level2,
-      AppLocalizations.of(context)!.level3
+      AppLocalizations.of(context)!.level3,
+      AppLocalizations.of(context)!.level4,
+      AppLocalizations.of(context)!.level5,
     ];
 
     List<String> themeColors = [
@@ -61,7 +63,12 @@ class _SettingPageScreenState extends State<SettingPageScreen> {
         ? AppLocalizations.of(context)!.level1
         : tempLevel.contains('2') == true
             ? AppLocalizations.of(context)!.level2
-            : AppLocalizations.of(context)!.level3;
+            : tempLevel.contains('3') == true
+                ? AppLocalizations.of(context)!.level3
+                : tempLevel.contains('4') == true
+                    ? AppLocalizations.of(context)!.level4
+                    : AppLocalizations.of(context)!.level5;
+
     selectedThemeColor = selectedThemeCode == 0
         ? AppLocalizations.of(context)!.pink
         : selectedThemeCode == 1

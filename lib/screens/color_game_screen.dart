@@ -1,5 +1,6 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:provider/provider.dart';
 import '../models/gameItems.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -20,6 +21,7 @@ class _ColorGameScreenState extends State<ColorGameScreen> {
   late int score;
   late bool gameOver;
 
+  late List<GameItem> choice_All;
   late List<GameItem> choice_A;
   late List<GameItem> choice_B;
 
@@ -42,35 +44,181 @@ class _ColorGameScreenState extends State<ColorGameScreen> {
     score = 0;
     gameOver = false;
 
-    choice_A = [
+    choice_All = [
       GameItem(
-          image: "assets/images/colors/Red.png",
-          name: localization!.red,
-          value: localization!.red),
+          image: "assets/images/colors/White.png",
+          name: localization!.white,
+          value: localization!.white,
+          level: "Level 1"),
       GameItem(
-          image: "assets/images/colors/Cyan.png",
-          name: localization!.cyan,
-          value: localization!.cyan),
-      GameItem(
-          image: "assets/images/colors/Green.png",
-          name: localization!.green,
-          value: localization!.green),
-      GameItem(
-          image: "assets/images/colors/Purple.png",
-          name: localization!.purple,
-          value: localization!.purple),
-      GameItem(
-          image: "assets/images/colors/Yellow.png",
-          name: localization!.yellow,
-          value: localization!.yellow),
+          image: "assets/images/colors/Black.png",
+          name: localization!.black,
+          value: localization!.black,
+          level: "Level 1"),
       GameItem(
           image: "assets/images/colors/Blue.png",
           name: localization!.blue,
-          value: localization!.blue),
+          value: localization!.blue,
+          level: "Level 1"),
+      GameItem(
+          image: "assets/images/colors/Red.png",
+          name: localization!.red,
+          value: localization!.red,
+          level: "Level 1"),
+      GameItem(
+          image: "assets/images/colors/Green.png",
+          name: localization!.green,
+          value: localization!.green,
+          level: "Level 1"),
+      GameItem(
+          image: "assets/images/colors/Yellow.png",
+          name: localization!.yellow,
+          value: localization!.yellow,
+          level: "Level 1"),
+      GameItem(
+          image: "assets/images/colors/Orange.png",
+          name: localization!.orange,
+          value: localization!.orange,
+          level: "Level 2"),
+      GameItem(
+          image: "assets/images/colors/Pink.png",
+          name: localization!.pink,
+          value: localization!.pink,
+          level: "Level 2"),
+      GameItem(
+          image: "assets/images/colors/Purple.png",
+          name: localization!.purple,
+          value: localization!.purple,
+          level: "Level 2"),
+      GameItem(
+          image: "assets/images/colors/Cyan.png",
+          name: localization!.cyan,
+          value: localization!.cyan,
+          level: "Level 2"),
+      GameItem(
+          image: "assets/images/colors/Mustard.png",
+          name: localization!.mustard,
+          value: localization!.mustard,
+          level: "Level 2"),
+      GameItem(
+          image: "assets/images/colors/Gray.png",
+          name: localization!.gray,
+          value: localization!.gray,
+          level: "Level 2"),
+      GameItem(
+          image: "assets/images/colors/Navy Blue.png",
+          name: localization!.navyblue,
+          value: localization!.navyblue,
+          level: "Level 3"),
+      GameItem(
+          image: "assets/images/colors/Golden.png",
+          name: localization!.golden,
+          value: localization!.golden,
+          level: "Level 3"),
+      GameItem(
+          image: "assets/images/colors/Burgundy.png",
+          name: localization!.burgundy,
+          value: localization!.burgundy,
+          level: "Level 3"),
+      GameItem(
+          image: "assets/images/colors/Lime.png",
+          name: localization!.lime,
+          value: localization!.lime,
+          level: "Level 3"),
+      GameItem(
+          image: "assets/images/colors/Cream.png",
+          name: localization!.cream,
+          value: localization!.cream,
+          level: "Level 3"),
+      GameItem(
+          image: "assets/images/colors/Aqua.png",
+          name: localization!.aqua,
+          value: localization!.aqua,
+          level: "Level 3"),
+      GameItem(
+          image: "assets/images/colors/Beige.png",
+          name: localization!.beige,
+          value: localization!.beige,
+          level: "Level 4"),
+      GameItem(
+          image: "assets/images/colors/Silver.png",
+          name: localization!.silver,
+          value: localization!.silver,
+          level: "Level 4"),
+      GameItem(
+          image: "assets/images/colors/Olive.png",
+          name: localization!.olive,
+          value: localization!.olive,
+          level: "Level 4"),
+      GameItem(
+          image: "assets/images/colors/Coral.png",
+          name: localization!.coral,
+          value: localization!.coral,
+          level: "Level 4"),
+      GameItem(
+          image: "assets/images/colors/Mauve.png",
+          name: localization!.mauve,
+          value: localization!.mauve,
+          level: "Level 4"),
+      GameItem(
+          image: "assets/images/colors/Teal.png",
+          name: localization!.teal,
+          value: localization!.teal,
+          level: "Level 4"),
+      GameItem(
+          image: "assets/images/colors/Bronze.png",
+          name: localization!.bronze,
+          value: localization!.bronze,
+          level: "Level 5"),
+      GameItem(
+          image: "assets/images/colors/Maroon.png",
+          name: localization!.maroon,
+          value: localization!.maroon,
+          level: "Level 5"),
+      GameItem(
+          image: "assets/images/colors/Lavender.png",
+          name: localization!.lavender,
+          value: localization!.lavender,
+          level: "Level 5"),
+      GameItem(
+          image: "assets/images/colors/Rust.png",
+          name: localization!.rust,
+          value: localization!.rust,
+          level: "Level 5"),
+      GameItem(
+          image: "assets/images/colors/Peach.png",
+          name: localization!.peach,
+          value: localization!.peach,
+          level: "Level 5"),
+      GameItem(
+          image: "assets/images/colors/Magenta.png",
+          name: localization!.magenta,
+          value: localization!.magenta,
+          level: "Level 5"),
     ];
+    // late String temp;
+    // switch (tempLevel) {
+    //   case "Level 1":
+    //     temp = "";
+    //     break;
+    //   case "Level 2":
+    //     i = 6;
+    //     break;
+    //   case "Level 3":
+    //     i = 6;
+    //     break;
+    //   case "Level 4":
+    //     i = 6;
+    //     break;
+    //   case "Level 5":
+    //     i = 6;
+    //     break;
+    // }
 
-    choice_B = List<GameItem>.from(choice_A);
-
+    choice_A = List<GameItem>.from(choice_All.where(
+        (element) => element.level == GetStorage().read('selectedLevel')));
+    choice_B = List<GameItem>.from(choice_All.where(
+        (element) => element.level == GetStorage().read('selectedLevel')));
     choice_A.shuffle();
     choice_B.shuffle();
   }

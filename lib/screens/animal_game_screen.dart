@@ -45,32 +45,35 @@ class _AnimalGameScreenState extends State<AnimalGameScreen> {
 
     choice_A = [
       GameItem(
-        image: "assets/images/animals/Doe.png",
-        name: localization!.doe,
-        value: localization!.doe,
-      ),
+          image: "assets/images/animals/Doe.png",
+          name: localization!.doe,
+          value: localization!.doe,
+          level: 'Level 1'),
       GameItem(
           image: "assets/images/animals/Elephant.png",
           name: localization!.elephant,
-          value: localization!.elephant),
+          value: localization!.elephant,
+          level: 'Level 1'),
       GameItem(
-        image: "assets/images/animals/Ewe.png",
-        name: localization!.ewe,
-        value: localization!.ewe,
-      ),
+          image: "assets/images/animals/Ewe.png",
+          name: localization!.ewe,
+          value: localization!.ewe,
+          level: 'Level 1'),
       GameItem(
           image: "assets/images/animals/Giraffe.png",
           name: localization!.giraffe,
-          value: localization!.giraffe),
+          value: localization!.giraffe,
+          level: 'Level 1'),
       GameItem(
-        image: "assets/images/animals/Mule.png",
-        name: localization!.mule,
-        value: localization!.mule,
-      ),
+          image: "assets/images/animals/Mule.png",
+          name: localization!.mule,
+          value: localization!.mule,
+          level: 'Level 1'),
       GameItem(
           image: "assets/images/animals/Ostrich.png",
           name: localization!.ostrich,
-          value: localization!.ostrich),
+          value: localization!.ostrich,
+          level: 'Level 1'),
     ];
 
     choice_B = List<GameItem>.from(choice_A);

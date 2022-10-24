@@ -46,27 +46,33 @@ class _FruitGameScreenState extends State<FruitGameScreen> {
       GameItem(
           image: "assets/images/fruits/Apple.png",
           name: localization!.apple,
-          value: localization!.apple),
+          value: localization!.apple,
+          level: 'Level 1'),
       GameItem(
           image: "assets/images/fruits/Apricot.png",
           name: localization.apricot,
-          value: localization.apricot),
+          value: localization.apricot,
+          level: 'Level 1'),
       GameItem(
           image: "assets/images/fruits/Avocado.png",
           name: localization.avocado,
-          value: localization.avocado),
+          value: localization.avocado,
+          level: 'Level 1'),
       GameItem(
           image: "assets/images/fruits/Banana.png",
           name: localization.banana,
-          value: localization.banana),
+          value: localization.banana,
+          level: 'Level 1'),
       GameItem(
           image: "assets/images/fruits/Blueberries.png",
           name: localization.blueberries,
-          value: localization.blueberries),
+          value: localization.blueberries,
+          level: 'Level 1'),
       GameItem(
           image: "assets/images/fruits/Cherry.png",
           name: localization.cherry,
-          value: localization.cherry),
+          value: localization.cherry,
+          level: 'Level 1'),
     ];
 
     choice_B = List<GameItem>.from(choice_A);

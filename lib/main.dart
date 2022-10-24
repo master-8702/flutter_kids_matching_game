@@ -25,7 +25,12 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   void initState() {
-    // TODO: implement initState
+    final box = GetStorage();
+    box.writeIfNull('selectedLanguage', 'English');
+    box.writeIfNull('selectedLevel', 'Level 1');
+    box.writeIfNull('selectedThemeColor', 'Pink');
+    box.writeIfNull('selectedThemeCode', 0);
+    box.writeIfNull('selectedLocale', 'en');
     super.initState();
   }
 
