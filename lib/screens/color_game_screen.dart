@@ -1,5 +1,6 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_kids_matching_game/utilities/utilities.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:provider/provider.dart';
 import '../models/gameItems.dart';
@@ -20,6 +21,7 @@ class _ColorGameScreenState extends State<ColorGameScreen> {
   // here new score
   late int score;
   late bool gameOver;
+  late Utilities utilities = Utilities();
 
   late List<GameItem> choice_All;
   late List<GameItem> choice_A;
@@ -184,7 +186,7 @@ class _ColorGameScreenState extends State<ColorGameScreen> {
           image: "assets/images/colors/Rust.png",
           name: localization!.rust,
           value: localization!.rust,
-          level: "Level 5"),
+          level: localization.level5),
       GameItem(
           image: "assets/images/colors/Peach.png",
           name: localization!.peach,
@@ -196,29 +198,12 @@ class _ColorGameScreenState extends State<ColorGameScreen> {
           value: localization!.magenta,
           level: "Level 5"),
     ];
-    // late String temp;
-    // switch (tempLevel) {
-    //   case "Level 1":
-    //     temp = "";
-    //     break;
-    //   case "Level 2":
-    //     i = 6;
-    //     break;
-    //   case "Level 3":
-    //     i = 6;
-    //     break;
-    //   case "Level 4":
-    //     i = 6;
-    //     break;
-    //   case "Level 5":
-    //     i = 6;
-    //     break;
-    // }
 
-    choice_A = List<GameItem>.from(choice_All.where(
-        (element) => element.level == GetStorage().read('selectedLevel')));
-    choice_B = List<GameItem>.from(choice_All.where(
-        (element) => element.level == GetStorage().read('selectedLevel')));
+    print(utilities.getGameLevel());
+    choice_A = List<GameItem>.from(choice_All.where((element) =>
+        element.level.contains(utilities.getGameLevel().toString())));
+    choice_B = List<GameItem>.from(choice_All.where((element) =>
+        element.level.contains(utilities.getGameLevel().toString())));
     choice_A.shuffle();
     choice_B.shuffle();
   }
@@ -235,7 +220,10 @@ class _ColorGameScreenState extends State<ColorGameScreen> {
     }
     return Scaffold(
       appBar: AppBar(
-        title: Text('${AppLocalizations.of(context)!.score} :  $score'),
+        title: Text(
+          '${AppLocalizations.of(context)!.score} :  $score',
+          style: const TextStyle(fontSize: 30),
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -245,7 +233,7 @@ class _ColorGameScreenState extends State<ColorGameScreen> {
         child: const Icon(Icons.refresh),
       ),
       body: Material(
-        child: Expanded(
+        child: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Column(
@@ -348,14 +336,17 @@ class _ColorGameScreenState extends State<ColorGameScreen> {
                 if (gameOver)
                   Column(
                     children: [
+                      const SizedBox(
+                        height: 100,
+                      ),
                       Text(
                         "$score/60",
                         style: const TextStyle(fontSize: 50),
                       ),
                       Text(
                         AppLocalizations.of(context)!.gameOver,
-                        style: const TextStyle(
-                            color: Colors.red,
+                        style: TextStyle(
+                            color: score >= 50 ? Colors.green : Colors.red,
                             fontWeight: FontWeight.bold,
                             fontSize: 40),
                       ),
@@ -372,7 +363,26 @@ class _ColorGameScreenState extends State<ColorGameScreen> {
                             setState(() {});
                           },
                         ),
-                      )
+                      ),
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      if ((score >= 50) && utilities.getGameLevel() <= 4)
+                        Center(
+                          child: ElevatedButton(
+                            child: Text(
+                              AppLocalizations.of(context)!.nextGame,
+                              // style: TextStyle(
+                              //   fontSize: 30,
+                              // ),
+                            ),
+                            onPressed: () {
+                              utilities.nextGameLevel();
+                              initGame();
+                              setState(() {});
+                            },
+                          ),
+                        )
                     ],
                   ),
               ],

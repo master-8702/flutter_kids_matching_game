@@ -1,7 +1,8 @@
 {
 "language": "لغة",
-"gameOver":"انتهت اللعبة",
+"gameOver":"!انتهت اللعبة",
 "tryAgain": "حاول ثانية!",
+"nextGame":"⋘   المباراة القادمة",
 "colorGame":"لعبة اللون",
 "animalGame":"لعبة الحيوان",
 "fruitGame":"لعبة الفاكهة",
@@ -23,6 +24,9 @@
 "pink":"زهري",
 "purple":"ليلكي",
 "orange":"لون برتقالي",
+
+
+
 
 "red": "أحمر",
 "cyan": "ازرق سماوي",
@@ -60,22 +64,76 @@
 
 
 
-
-
 "apple": "تفاح",
-"apricot": "مشمش",
-"avocado": "أفوكادو",
 "banana": "موز",
-"blueberries": "توت",
+"strawberry": "الفراولة",
+"pineapple": "أناناس",
+"orange": "البرتقالي",
+"grapes": "العنب",
+"avocado": "أفوكادو",
+"apricot": "مشمش",
+"blueberry": "توت بري",
+"mango": "مانجو",
+"pear": "كمثرى",
+"watermelon": "البطيخ",
+"cactus fruit": "فاكهة الصبار",
 "cherry": "كرز",
+"guava": "جوافة",
+"lemon": "ليمون",
+"papaya": "بابايا",
+"tangerine": "يوسفي",
+"coconut": "جوزة الهند",
+"fig": "تين",
+"citron": "سيترون",
+"plum": "وظيفة محترمة",
+"soursop": "قشطة شائكة",
+"whitesapote": "سبوت أبيض",
+"date": "تمر",
+"lychee": "ليتشي",
+"nectarine": "زليقة",
+"passionfruit": "فاكهة العاطفة",
+"peach": "خوخ",
+"pomegranate": "رمان",
 
 
-"doe": "ظبية",
+
+
+
+
+
+
+
+
+"sheep": "خروف",
+"lion": "أسد",
 "elephant": "الفيل",
-"ewe": "نعجة",
+"ostrich": "نعامة",
 "giraffe": "زرافة",
+"deer": "الغزال",
+"camel": "جمل",
+"chicken": "دجاج",
+"leopard": "فهد",
+"monkey": "قرد",
+"zebra": "الحمار الوحشي",
+"owl": "بُومَة",
+"tiger": "نمر",
+"ox": "ثور",
+"squirrel": "سنجاب",
+"mouse": "الفأر",
+"gorilla": "غوريلا",
+"chimpanzee": "الشمبانزي",
+"buffalo": "الجاموس",
+"cheetah": "الفهد",
+"crocodile": "تمساح",
+"duck": "بطة",
+"fox": "الثعلب",
+"hippopotamus": "فرس نهر",
 "mule": "بغل",
-"ostrich": "نعامة"
+"horse": "حصان",
+"kangaroo": "كنغر",
+"panter": "بانتر",
+"penguin": "البطريق",
+"rhinoceros": "وحيد القرن"
 
 
 }

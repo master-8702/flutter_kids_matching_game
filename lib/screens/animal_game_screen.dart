@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../models/gameItems.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
 import '../provider/settings_provider.dart';
+import '../utilities/utilities.dart';
 
 class AnimalGameScreen extends StatefulWidget {
   const AnimalGameScreen({Key? key}) : super(key: key);
@@ -19,7 +19,9 @@ class _AnimalGameScreenState extends State<AnimalGameScreen> {
   // here new score
   late int score;
   late bool gameOver;
+  late Utilities utilities = Utilities();
 
+  late List<GameItem> choice_All;
   late List<GameItem> choice_A;
   late List<GameItem> choice_B;
 
@@ -43,41 +45,163 @@ class _AnimalGameScreenState extends State<AnimalGameScreen> {
     score = 0;
     gameOver = false;
 
-    choice_A = [
+    choice_All = [
       GameItem(
-          image: "assets/images/animals/Doe.png",
-          name: localization!.doe,
-          value: localization!.doe,
+          image: "assets/images/animals/sheep.png",
+          name: localization!.sheep,
+          value: localization!.sheep,
           level: 'Level 1'),
       GameItem(
-          image: "assets/images/animals/Elephant.png",
+          image: "assets/images/animals/lion.png",
+          name: localization!.lion,
+          value: localization!.lion,
+          level: 'Level 1'),
+      GameItem(
+          image: "assets/images/animals/elephant.png",
           name: localization!.elephant,
           value: localization!.elephant,
           level: 'Level 1'),
       GameItem(
-          image: "assets/images/animals/Ewe.png",
-          name: localization!.ewe,
-          value: localization!.ewe,
+          image: "assets/images/animals/ostrich.png",
+          name: localization!.ostrich,
+          value: localization!.ostrich,
           level: 'Level 1'),
       GameItem(
-          image: "assets/images/animals/Giraffe.png",
+          image: "assets/images/animals/giraffe.png",
           name: localization!.giraffe,
           value: localization!.giraffe,
           level: 'Level 1'),
       GameItem(
-          image: "assets/images/animals/Mule.png",
-          name: localization!.mule,
-          value: localization!.mule,
+          image: "assets/images/animals/camel.png",
+          name: localization!.camel,
+          value: localization!.camel,
           level: 'Level 1'),
       GameItem(
-          image: "assets/images/animals/Ostrich.png",
-          name: localization!.ostrich,
-          value: localization!.ostrich,
-          level: 'Level 1'),
+          image: "assets/images/animals/chicken.png",
+          name: localization!.chicken,
+          value: localization!.chicken,
+          level: 'Level 2'),
+      GameItem(
+          image: "assets/images/animals/leopard.png",
+          name: localization!.leopard,
+          value: localization!.leopard,
+          level: 'Level 2'),
+      GameItem(
+          image: "assets/images/animals/monkey.png",
+          name: localization!.monkey,
+          value: localization!.monkey,
+          level: 'Level 2'),
+      GameItem(
+          image: "assets/images/animals/zebra.png",
+          name: localization!.zebra,
+          value: localization!.zebra,
+          level: 'Level 2'),
+      GameItem(
+          image: "assets/images/animals/owl.png",
+          name: localization!.owl,
+          value: localization!.owl,
+          level: 'Level 2'),
+      GameItem(
+          image: "assets/images/animals/tiger.png",
+          name: localization!.tiger,
+          value: localization!.tiger,
+          level: 'Level 2'),
+      GameItem(
+          image: "assets/images/animals/ox.png",
+          name: localization!.ox,
+          value: localization!.ox,
+          level: 'Level 3'),
+      GameItem(
+          image: "assets/images/animals/squirrel.png",
+          name: localization!.squirrel,
+          value: localization!.squirrel,
+          level: 'Level 3'),
+      GameItem(
+          image: "assets/images/animals/mouse.png",
+          name: localization!.mouse,
+          value: localization!.mouse,
+          level: 'Level 3'),
+      GameItem(
+          image: "assets/images/animals/gorilla.png",
+          name: localization!.gorilla,
+          value: localization!.gorilla,
+          level: 'Level 3'),
+      GameItem(
+          image: "assets/images/animals/chimpanzee.png",
+          name: localization!.chimpanzee,
+          value: localization!.chimpanzee,
+          level: 'Level 3'),
+      GameItem(
+          image: "assets/images/animals/buffalo.png",
+          name: localization!.buffalo,
+          value: localization!.buffalo,
+          level: 'Level 3'),
+      GameItem(
+          image: "assets/images/animals/cheetah.png",
+          name: localization!.cheetah,
+          value: localization!.cheetah,
+          level: 'Level 4'),
+      GameItem(
+          image: "assets/images/animals/crocodile.png",
+          name: localization!.crocodile,
+          value: localization!.crocodile,
+          level: 'Level 4'),
+      GameItem(
+          image: "assets/images/animals/duck.png",
+          name: localization!.duck,
+          value: localization!.duck,
+          level: 'Level 4'),
+      GameItem(
+          image: "assets/images/animals/fox.png",
+          name: localization!.fox,
+          value: localization!.fox,
+          level: 'Level 4'),
+      GameItem(
+          image: "assets/images/animals/hippopotamus.png",
+          name: localization!.hippopotamus,
+          value: localization!.hippopotamus,
+          level: 'Level 4'),
+      GameItem(
+          image: "assets/images/animals/mule.png",
+          name: localization!.mule,
+          value: localization!.mule,
+          level: 'Level 4'),
+      GameItem(
+          image: "assets/images/animals/horse.png",
+          name: localization!.horse,
+          value: localization.horse,
+          level: 'Level 5'),
+      GameItem(
+          image: "assets/images/animals/kangaroo.png",
+          name: localization.kangaroo,
+          value: localization.kangaroo,
+          level: 'Level 5'),
+      GameItem(
+          image: "assets/images/animals/deer.png",
+          name: localization.deer,
+          value: localization.deer,
+          level: 'Level 5'),
+      GameItem(
+          image: "assets/images/animals/panter.png",
+          name: localization.panter,
+          value: localization.panter,
+          level: 'Level 5'),
+      GameItem(
+          image: "assets/images/animals/penguin.png",
+          name: localization.penguin,
+          value: localization.penguin,
+          level: 'Level 5'),
+      GameItem(
+          image: "assets/images/animals/rhinoceros.png",
+          name: localization.rhinoceros,
+          value: localization.rhinoceros,
+          level: 'Level 5'),
     ];
 
-    choice_B = List<GameItem>.from(choice_A);
-
+    choice_A = List<GameItem>.from(choice_All.where((element) =>
+        element.level.contains(utilities.getGameLevel().toString())));
+    choice_B = List<GameItem>.from(choice_All.where((element) =>
+        element.level.contains(utilities.getGameLevel().toString())));
     choice_A.shuffle();
     choice_B.shuffle();
   }
@@ -93,7 +217,10 @@ class _AnimalGameScreenState extends State<AnimalGameScreen> {
     }
     return Scaffold(
       appBar: AppBar(
-        title: Text('${AppLocalizations.of(context)!.score} :  $score'),
+        title: Text(
+          '${AppLocalizations.of(context)!.score} :  $score',
+          style: const TextStyle(fontSize: 30),
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -103,7 +230,7 @@ class _AnimalGameScreenState extends State<AnimalGameScreen> {
         child: const Icon(Icons.refresh),
       ),
       body: Material(
-        child: Expanded(
+        child: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Column(
@@ -210,14 +337,17 @@ class _AnimalGameScreenState extends State<AnimalGameScreen> {
                 if (gameOver)
                   Column(
                     children: [
+                      const SizedBox(
+                        height: 100,
+                      ),
                       Text(
                         "$score/60",
                         style: const TextStyle(fontSize: 50),
                       ),
                       Text(
                         AppLocalizations.of(context)!.gameOver,
-                        style: const TextStyle(
-                            color: Colors.red,
+                        style: TextStyle(
+                            color: score >= 50 ? Colors.green : Colors.red,
                             fontWeight: FontWeight.bold,
                             fontSize: 40),
                       ),
@@ -234,7 +364,26 @@ class _AnimalGameScreenState extends State<AnimalGameScreen> {
                             setState(() {});
                           },
                         ),
-                      )
+                      ),
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      if ((score >= 50) && utilities.getGameLevel() <= 4)
+                        Center(
+                          child: ElevatedButton(
+                            child: Text(
+                              AppLocalizations.of(context)!.nextGame,
+                              // style: TextStyle(
+                              //   fontSize: 30,
+                              // ),
+                            ),
+                            onPressed: () {
+                              utilities.nextGameLevel();
+                              initGame();
+                              setState(() {});
+                            },
+                          ),
+                        )
                     ],
                   ),
               ],

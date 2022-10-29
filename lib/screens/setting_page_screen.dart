@@ -25,10 +25,10 @@ class _SettingPageScreenState extends State<SettingPageScreen> {
     // The following variables will be used to save the  app state like selected language, theme color and game level
     // we will read them(the sates) from local storage if there is any but if the app runs for the first time (there are no any states)
     // we will assign initial values
-    box.writeIfNull('selectedLanguage', 'English');
-    box.writeIfNull('selectedLevel', 'Level 1');
-    box.writeIfNull('selectedThemeColor', 'Pink');
-    box.writeIfNull('selectedThemeCode', '0');
+    // box.writeIfNull('selectedLanguage', 'English');
+    // box.writeIfNull('selectedLevel', 'Level 1');
+    // box.writeIfNull('selectedThemeColor', 'Pink');
+    // box.writeIfNull('selectedThemeCode', 0);
 
     // TODO: implement initState
     super.initState();
