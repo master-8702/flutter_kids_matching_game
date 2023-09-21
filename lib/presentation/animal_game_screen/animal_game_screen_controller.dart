@@ -3,7 +3,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:flutter_kids_matching_game/models/gameItems.dart';
+import 'package:flutter_kids_matching_game/domain/game_item.dart';
 import 'package:flutter_kids_matching_game/utilities/utilities.dart';
 import 'package:flutter_kids_matching_game/data/animal_game_screen_state.dart';
 

@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 
-import 'package:flutter_kids_matching_game/models/gameItems.dart';
+import 'package:flutter_kids_matching_game/domain/game_item.dart';
 
 class AnimalGameScreenState {
   const AnimalGameScreenState({
