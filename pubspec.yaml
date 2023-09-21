@@ -16,14 +16,15 @@ dependencies:
   flutter_localizations:
     sdk: flutter
 
-  intl: ^0.17.0
+  intl: ^0.18.0
 
 
-  cupertino_icons: ^1.0.2
-  audioplayers: ^1.0.1
-  font_awesome_flutter: ^10.1.0
-  provider: ^6.0.3
-  get_storage: ^2.0.3
+  cupertino_icons: 1.0.2
+  audioplayers: 1.0.1
+  font_awesome_flutter: 10.1.0
+  provider: 6.0.3
+  get_storage: 2.0.3
+  flutter_riverpod: 2.4.0
 
 dev_dependencies:
   flutter_test:
