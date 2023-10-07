@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_kids_matching_game/utilities/utilities.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:provider/provider.dart';
-import '../models/gameItems.dart';
+import '../domain/game_item.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../provider/settings_provider.dart';

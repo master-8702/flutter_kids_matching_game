@@ -7,18 +7,23 @@ import 'package:flutter_kids_matching_game/data/settings_repository.dart';
 import 'package:flutter_kids_matching_game/services/storage_service.dart';
 
 class LocalSettingsRepository extends SettingsRepository {
-  late String _selectedLanguage = _storageService.read(kSelectedLanguageKey);
-  late String _selectedLevel = _storageService.read(kSelectedLevelKey);
-  late Color _selectedThemeColor = getSelectedThemeColor();
+  late String _selectedLanguage;// = _storageService.read(kSelectedLanguageKey);
+  late String _selectedLevel;// = _storageService.read(kSelectedLevelKey);
 
-  late int _selectedThemeCode = getSelectedThemeCode();
-  late Locale _selectedLocale = _storageService.read(kSelectedLocaleKey);
+  late int _selectedThemeCode;// = getSelectedThemeCode();
+  late Locale _selectedLocale;
+  // late String _selectedLanguage = _storageService.read(kSelectedLanguageKey);
+  // late String _selectedLevel = _storageService.read(kSelectedLevelKey);
+  // late Color _selectedThemeColor = getSelectedThemeColor();
+
+  // late int _selectedThemeCode = getSelectedThemeCode();
+  // late Locale _selectedLocale = _storageService.read(kSelectedLocaleKey);
   final _storageService = StorageService();
 
   void initValues() async {
     await _storageService.init();
-    _selectedLanguage = _storageService.read(kSelectedLanguageKey);
-    _selectedLevel = _storageService.read(kSelectedLevelKey);
+    _selectedLanguage = getSelectedLanguage();
+    _selectedLevel = getSelectedLevel();
     // _selectedThemeColor = _storageService.read(kSelectedThemeColorKey);
     _selectedThemeCode = getSelectedThemeCode();
     _selectedLocale = getSelectedLocal();
@@ -40,28 +45,7 @@ class LocalSettingsRepository extends SettingsRepository {
   }
 
   @override
-  Color getSelectedThemeColor() {
-    // _selectedThemeColor = _storageService.read(kSelectedThemeColorKey);
-    var themeColorCode = getSelectedThemeCode();
-    _selectedThemeColor = themeColorCode == 0
-        ? Colors.pinkAccent
-        : themeColorCode == 1
-            ? Colors.purpleAccent
-            : Colors.orangeAccent;
-
-    return _selectedThemeColor;
-  }
-
-  @override
-  String getSelectedThemeColorString() {
-    // TODO: implement getSelectedThemeColorString
-    throw UnimplementedError();
-  }
-
-  @override
   int getSelectedThemeCode() {
-    var ab = _storageService.read(kSelectedThemeCodeKey);
-    print(ab.runtimeType);
     _selectedThemeCode = _storageService.read(kSelectedThemeCodeKey);
 
     return _selectedThemeCode;
@@ -97,11 +81,6 @@ class LocalSettingsRepository extends SettingsRepository {
   }
 
   @override
-  void setSelectedThemeColor(Color themeColor) {
-    _storageService.write(kSelectedThemeColorKey, themeColor);
-  }
-
-  @override
   void setSelectedThemeCode(int themeCode) {
     _storageService.write(kSelectedThemeCodeKey, themeCode);
   }
@@ -109,11 +88,6 @@ class LocalSettingsRepository extends SettingsRepository {
   @override
   void setSelectedLocal(Locale locale) {
     _storageService.write(kSelectedLocaleKey, locale.toString());
-  }
-
-  @override
-  void setSelectedThemeColorString(String themeColor) {
-    _storageService.write(kSelectedThemeColorStringKey, themeColor);
   }
 }
 
