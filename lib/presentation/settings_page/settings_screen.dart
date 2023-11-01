@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_kids_matching_game/l10n/l10n.dart';
-import 'package:flutter_kids_matching_game/provider/settings_controller.dart';
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import 'package:flutter_kids_matching_game/provider/settings_controller.dart';
+import 'package:flutter_kids_matching_game/presentation/settings_page/level_selector.dart';
+import 'package:flutter_kids_matching_game/presentation/settings_page/language_selector.dart';
+import 'package:flutter_kids_matching_game/presentation/settings_page/theme_color_selector.dart';
 
 class SettingScreen extends ConsumerWidget {
   const SettingScreen({Key? key}) : super(key: key);
@@ -65,125 +69,18 @@ class SettingScreen extends ConsumerWidget {
           padding: const EdgeInsets.all(12.0),
           child: Column(
             children: [
-              Row(
-                children: [
-                  Text(
-                    AppLocalizations.of(context)!.lessonLanguage,
-                    style: const TextStyle(fontSize: 20),
-                  ),
-                  const SizedBox(
-                    width: 30,
-                  ),
-                  DropdownButton<String>(
-                    value: selectedLanguage,
-                    icon: const Icon(Icons.translate),
-                    iconSize: 24,
-                    elevation: 16,
-                    style:
-                        TextStyle(color: settingsControllerProvider.themeColor),
-                    underline: Container(
-                      height: 2,
-                      color: settingsControllerProvider.themeColor,
-                    ),
-                    onChanged: (String? newValue) {
-                      print(newValue);
-                      if (newValue != null && newValue.isNotEmpty) {
-                        ref
-                            .read(settingsNotifierProvider.notifier)
-                            .setSelectedLanguage(newValue);
-                      }
-                    },
-                    items:
-                        L10n.all.map<DropdownMenuItem<String>>((Locale value) {
-                      return DropdownMenuItem<String>(
-                        value: L10n.getLanguages(value.toString()),
-                        child: Text(
-                          L10n.getLanguages(value.toString()),
-                          style: const TextStyle(fontSize: 18),
-                        ),
-                      );
-                    }).toList(),
-                  ),
-                ],
-              ),
-              Row(
-                children: [
-                  Text(
-                    AppLocalizations.of(context)!.gameLevel,
-                    style: const TextStyle(fontSize: 20),
-                  ),
-                  const SizedBox(
-                    width: 30,
-                  ),
-                  DropdownButton<String>(
-                    value: selectedLevel,
-                    icon: const Icon(Icons.arrow_upward),
-                    iconSize: 24,
-                    elevation: 16,
-                    style:
-                        TextStyle(color: settingsControllerProvider.themeColor),
-                    underline: Container(height: 2, color: selectedThemeColor),
-                    onChanged: (String? newValue) {
-                      if (newValue != null && newValue.isNotEmpty) {
-                        ref
-                            .read(settingsNotifierProvider.notifier)
-                            .setSelectedLevel(newValue);
-                      }
-                    },
-                    items: gameLevels
-                        .map<DropdownMenuItem<String>>((String value) {
-                      return DropdownMenuItem<String>(
-                        value: value,
-                        child: Text(
-                          value,
-                          style: const TextStyle(fontSize: 18),
-                        ),
-                      );
-                    }).toList(),
-                  ),
-                ],
-              ),
-              Row(
-                children: [
-                  Text(
-                    AppLocalizations.of(context)!.themeColor,
-                    style: const TextStyle(fontSize: 20),
-                  ),
-                  const SizedBox(
-                    width: 30,
-                  ),
-                  DropdownButton<String>(
-                    value: selectedThemeColorName,
-                    icon: const Icon(Icons.color_lens),
-                    iconSize: 24,
-                    elevation: 6,
-                    style:
-                        TextStyle(color: settingsControllerProvider.themeColor),
-                    underline: Container(
-                      height: 2,
-                      color: settingsControllerProvider.themeColor,
-                    ),
-                    onChanged: (String? newValue) async {
-                      if (newValue != null && newValue.isNotEmpty) {
-                        var temp = themeColors.indexOf(newValue);
-                        await ref
-                            .read(settingsNotifierProvider.notifier)
-                            .setSelectedThemeCode(temp);
-                      }
-                    },
-                    items: themeColors
-                        .map<DropdownMenuItem<String>>((String value) {
-                      return DropdownMenuItem<String>(
-                        value: value,
-                        child: Text(
-                          value,
-                          style: const TextStyle(fontSize: 18),
-                        ),
-                      );
-                    }).toList(),
-                  ),
-                ],
-              )
+              LanguageSelector(
+                  selectedLanguage: selectedLanguage,
+                  settingsControllerProvider: settingsControllerProvider),
+              LevelSelector(
+                  selectedLevel: selectedLevel,
+                  settingsControllerProvider: settingsControllerProvider,
+                  selectedThemeColor: selectedThemeColor,
+                  gameLevels: gameLevels),
+              ThemeColorSelector(
+                  selectedThemeColorName: selectedThemeColorName,
+                  settingsControllerProvider: settingsControllerProvider,
+                  themeColors: themeColors)
             ],
           ),
         ),
