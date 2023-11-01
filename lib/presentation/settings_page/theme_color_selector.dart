@@ -39,7 +39,6 @@ class LanguageSelector extends ConsumerWidget {
             color: settingsControllerProvider.themeColor,
           ),
           onChanged: (String? newValue) {
-            print(newValue);
             if (newValue != null && newValue.isNotEmpty) {
               ref
                   .read(settingsNotifierProvider.notifier)

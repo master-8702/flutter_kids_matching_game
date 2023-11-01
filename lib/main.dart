@@ -6,7 +6,6 @@ import 'package:flutter_kids_matching_game/provider/settings_controller.dart';
 import 'package:flutter_kids_matching_game/screens/color_game_screen.dart';
 import 'package:flutter_kids_matching_game/screens/fruit_game_screen.dart';
 import 'package:flutter_kids_matching_game/screens/game-list_screen.dart';
-import 'package:flutter_kids_matching_game/screens/setting_page_screen.dart';
 import 'package:flutter_kids_matching_game/services/storage_service.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -62,12 +61,10 @@ class MyApp extends ConsumerWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => const GameListScreen(),
-        '/animalGame': (context) => AnimalGameScreen(),
         '/colorGame': (context) => const ColorGameScreen(),
-        // '/animalGame': (context) => AnimalGameScreen(),
+        '/animalGame': (context) => AnimalGameScreen(),
         '/fruitGame': (context) => const FruitGameScreen(),
-        '/setting': (context) => const SettingPageScreen(),
-        '/setting2': (context) => const SettingScreen(),
+        '/setting': (context) => const SettingScreen(),
       },
       supportedLocales: L10n.all,
       localizationsDelegates: const [

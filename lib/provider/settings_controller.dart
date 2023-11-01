@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_kids_matching_game/data/settings_state.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:flutter_kids_matching_game/data/local_settings_repository.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_kids_matching_game/l10n/l10n.dart';
+
+import 'package:flutter_kids_matching_game/data/settings_state.dart';
+import 'package:flutter_kids_matching_game/data/local_settings_repository.dart';
 
 class SettingsController extends Notifier<SettingState> {
   final localSettingsRepository = LocalSettingsRepository();

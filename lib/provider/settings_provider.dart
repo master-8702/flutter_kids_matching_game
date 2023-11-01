@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_kids_matching_game/l10n/l10n.dart';
+
 import 'package:get_storage/get_storage.dart';
 
-class SettingsProvider extends ChangeNotifier {
-  String selectedLocale = GetStorage().read('selectedLocale');
-  late Locale? _locale =
-      selectedLocale != Null ? Locale(selectedLocale) : Locale('en');
+import 'package:flutter_kids_matching_game/l10n/l10n.dart';
 
-  int colorCode = GetStorage().read('selectedThemeCode');
-  late Color _themColor = colorCode == 0
+class SettingsProvider extends ChangeNotifier {
+  Locale _selectedLocale = GetStorage().read('selectedLocale');
+
+  final int _colorCode = GetStorage().read('selectedThemeCode');
+  late Color _themColor = _colorCode == 0
       ? Colors.pinkAccent
-      : colorCode == 1
+      : _colorCode == 1
           ? Colors.purpleAccent
           : Colors.orangeAccent;
 
   // then we will define getter and setter for the (selected)language
   Locale? get local {
-    return _locale;
+    return _selectedLocale;
   }
 
   // to set a new local language
@@ -24,13 +24,13 @@ class SettingsProvider extends ChangeNotifier {
     // here the condition is in case if the user selects from the phone's setting a language we don't support, then we don't set the locale.
 
     if (!L10n.all.contains(locale)) return;
-    _locale = locale;
+    _selectedLocale = locale;
     notifyListeners();
   }
 
 // to clear the setted language
   void clearLocale() {
-    _locale = null;
+    _selectedLocale = const Locale('en');
     notifyListeners();
   }
 
@@ -47,6 +47,5 @@ class SettingsProvider extends ChangeNotifier {
     } else {
       _themColor = Colors.orangeAccent;
     }
-    notifyListeners();
   }
 }
