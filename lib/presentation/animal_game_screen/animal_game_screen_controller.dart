@@ -18,7 +18,7 @@ class AnimalGameScreenController
   // To initialize or restart the game
   // here when the initGame() is called from the UI, we will set the new state
   // with new  choices by also considering the current selected language,
-  //since the context is also passed.
+  // since the context is also passed.
   Future<void> initGame(BuildContext context) async {
     final localization = AppLocalizations.of(context);
 
@@ -177,8 +177,6 @@ class AnimalGameScreenController
 
     final newChoiceA = List<GameItem>.from(newChoiceAll.where((element) =>
         element.level.contains(Utilities().getGameLevel().toString())));
-    // final newChoiceB = List<GameItem>.from(newChoiceAll.where((element) =>
-    //     element.level.contains(Utilities().getGameLevel().toString())));
     final newChoiceB = List<GameItem>.from(newChoiceA);
     newChoiceA.shuffle();
     newChoiceB.shuffle();
@@ -187,31 +185,22 @@ class AnimalGameScreenController
         score: 0, isGameOver: false, choiceA: newChoiceA, choiceB: newChoiceB);
   }
 
+  // will be called everytime when we answer (match) a question 
   void removeAnsweredChoices(GameItem answeredItem) {
     state.choiceA.remove(answeredItem);
     state.choiceB.remove(answeredItem);
     if (state.choiceA.isEmpty || state.choiceB.isEmpty) {
       state = state.copyWith(isGameOver: true);
     }
-
-    // var tempChoiceA = state.choiceA;
-    // var tempChoiceB = state.choiceB;
-    // tempChoiceA.remove(answeredItem);
-    // tempChoiceB.remove(answeredItem);
-    // if (state.choiceA.isEmpty || state.choiceB.isEmpty) {
-    //   // setting the isGameOver flag to true when the left side choice is empty
-    //   state = state.copyWith(
-    //       choiceA: tempChoiceA, choiceB: tempChoiceB, isGameOver: true);
-    // }
-    // state = state.copyWith(choiceA: tempChoiceA,choiceB: tempChoiceB );
   }
-
+  // will be called when we match questions with answers correctly
   void scoreIncrement() {
     var tempScore = state.score;
     tempScore += 10;
     state = state.copyWith(score: tempScore);
   }
 
+  // will be called when we match questions with answers incorrectly
   void scoreDecrement() {
     var tempScore = state.score;
     tempScore -= 5;
