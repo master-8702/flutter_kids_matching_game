@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_kids_matching_game/data/local_settings_repository.dart';
 import 'package:flutter_kids_matching_game/presentation/animal_game_screen/animal_game_screen.dart';
-import 'package:flutter_kids_matching_game/presentation/settings_page/settings_screen.dart';
-import 'package:flutter_kids_matching_game/provider/settings_controller.dart';
+import 'package:flutter_kids_matching_game/presentation/settings_screen/settings_screen.dart';
+import 'package:flutter_kids_matching_game/presentation/settings_screen_controller.dart';
 import 'package:flutter_kids_matching_game/screens/color_game_screen.dart';
 import 'package:flutter_kids_matching_game/screens/fruit_game_screen.dart';
 import 'package:flutter_kids_matching_game/screens/game-list_screen.dart';

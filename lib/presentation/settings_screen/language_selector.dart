@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'package:flutter_kids_matching_game/data/settings_state.dart';
-import 'package:flutter_kids_matching_game/provider/settings_controller.dart';
+import 'package:flutter_kids_matching_game/presentation/settings_screen_controller.dart';
 
 class ThemeColorSelector extends ConsumerWidget {
   const ThemeColorSelector({

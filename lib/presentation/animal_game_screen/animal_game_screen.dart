@@ -7,7 +7,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_kids_matching_game/presentation/animal_game_screen/choice_a.dart';
 import 'package:flutter_kids_matching_game/presentation/animal_game_screen/choice_b.dart';
 import 'package:flutter_kids_matching_game/presentation/animal_game_screen/game_result.dart';
-import 'package:flutter_kids_matching_game/presentation/animal_game_screen/animal_game_screen_controller.dart';
+import 'package:flutter_kids_matching_game/presentation/animal_game_screen_controller.dart';
 
 class AnimalGameScreen extends ConsumerWidget {
   AnimalGameScreen({Key? key}) : super(key: key);
