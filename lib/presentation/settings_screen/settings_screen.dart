@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import 'package:flutter_kids_matching_game/provider/settings_controller.dart';
-import 'package:flutter_kids_matching_game/presentation/settings_page/level_selector.dart';
-import 'package:flutter_kids_matching_game/presentation/settings_page/language_selector.dart';
-import 'package:flutter_kids_matching_game/presentation/settings_page/theme_color_selector.dart';
+import 'package:flutter_kids_matching_game/presentation/settings_screen_controller.dart';
+import 'package:flutter_kids_matching_game/presentation/settings_screen/level_selector.dart';
+import 'package:flutter_kids_matching_game/presentation/settings_screen/language_selector.dart';
+import 'package:flutter_kids_matching_game/presentation/settings_screen/theme_color_selector.dart';
 
 class SettingScreen extends ConsumerWidget {
   const SettingScreen({Key? key}) : super(key: key);

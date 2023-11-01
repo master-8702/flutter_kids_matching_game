@@ -1,55 +1,55 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_kids_matching_game/l10n/l10n.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'package:flutter_kids_matching_game/data/settings_state.dart';
-import 'package:flutter_kids_matching_game/provider/settings_controller.dart';
+import 'package:flutter_kids_matching_game/presentation/settings_screen_controller.dart';
 
-class LanguageSelector extends ConsumerWidget {
-  const LanguageSelector({
+class LevelSelector extends ConsumerWidget {
+  const LevelSelector({
     super.key,
-    required this.selectedLanguage,
+    required this.selectedLevel,
     required this.settingsControllerProvider,
+    required this.selectedThemeColor,
+    required this.gameLevels,
   });
 
-  final String selectedLanguage;
+  final String selectedLevel;
   final SettingState settingsControllerProvider;
+  final Color selectedThemeColor;
+  final List<String> gameLevels;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Row(
       children: [
         Text(
-          AppLocalizations.of(context)!.lessonLanguage,
+          AppLocalizations.of(context)!.gameLevel,
           style: const TextStyle(fontSize: 20),
         ),
         const SizedBox(
           width: 30,
         ),
         DropdownButton<String>(
-          value: selectedLanguage,
-          icon: const Icon(Icons.translate),
+          value: selectedLevel,
+          icon: const Icon(Icons.arrow_upward),
           iconSize: 24,
           elevation: 16,
           style: TextStyle(color: settingsControllerProvider.themeColor),
-          underline: Container(
-            height: 2,
-            color: settingsControllerProvider.themeColor,
-          ),
+          underline: Container(height: 2, color: selectedThemeColor),
           onChanged: (String? newValue) {
             if (newValue != null && newValue.isNotEmpty) {
               ref
                   .read(settingsNotifierProvider.notifier)
-                  .setSelectedLanguage(newValue);
+                  .setSelectedLevel(newValue);
             }
           },
-          items: L10n.all.map<DropdownMenuItem<String>>((Locale value) {
+          items: gameLevels.map<DropdownMenuItem<String>>((String value) {
             return DropdownMenuItem<String>(
-              value: L10n.getLanguages(value.toString()),
+              value: value,
               child: Text(
-                L10n.getLanguages(value.toString()),
+                value,
                 style: const TextStyle(fontSize: 18),
               ),
             );
