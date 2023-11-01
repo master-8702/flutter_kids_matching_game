@@ -1,10 +1,10 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:flutter_kids_matching_game/data/settings_state.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:flutter_kids_matching_game/data/local_settings_repository.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_kids_matching_game/l10n/l10n.dart';
+
+import 'package:flutter_kids_matching_game/data/settings_state.dart';
+import 'package:flutter_kids_matching_game/data/local_settings_repository.dart';
 
 class SettingsController extends Notifier<SettingState> {
   final localSettingsRepository = LocalSettingsRepository();
@@ -19,12 +19,10 @@ class SettingsController extends Notifier<SettingState> {
     Color themColor = getSelectedThemeColor();
     String level = settingsRepo.getSelectedLevel();
     String selectedLanguage = settingsRepo.getSelectedLanguage();
-    // String themeColorString = settingsRepo.getSelectedThemeColorString();
 
     return SettingState(
         locale: locale,
         themeColor: themColor,
-        themeColorString: 'pink',
         level: level,
         selectedLanguage: selectedLanguage,
         themeColorCode: themeColorCode);
@@ -43,9 +41,9 @@ class SettingsController extends Notifier<SettingState> {
   }
 
   Color getSelectedThemeColor() {
-    var selectedThemeColor = localSettingsRepository.getSelectedThemeCode();
+    var selectedThemeCode = localSettingsRepository.getSelectedThemeCode();
 
-    return _colorCodeToColor(selectedThemeColor);
+    return _colorCodeToColor(selectedThemeCode);
   }
 
   String getSelectedThemeColorString() {
@@ -93,27 +91,21 @@ class SettingsController extends Notifier<SettingState> {
     state = state.copyWith(level: level);
   }
 
-  Future<void> setSelectedThemeCode(String themeColorString) async {
-    var tempCode = _colorStringToColorCode(themeColorString);
-    print(tempCode);
-    localSettingsRepository.setSelectedThemeCode(tempCode);
-    var tempColor = _colorCodeToColor(tempCode);
-
-    print(state.toString());
+  Future<void> setSelectedThemeCode(int themeColorcode) async {
+    localSettingsRepository.setSelectedThemeCode(themeColorcode);
 
     state = state.copyWith(
-      themeColorCode: tempCode,
-      themeColor: tempColor,
-      themeColorString: themeColorString,
-    );
-    print(state.toString());
+        themeColorCode: themeColorcode,
+        themeColor:
+            _colorCodeToColor(themeColorcode) // here is the solution to the bug
+        );
   }
 
   void _changeLocal(Locale locale) {
-    // here the condition is in case if the user selects from the phone's setting a language we don't support, then we don't set the locale.
+    // here the condition is in case if the user selects from the phone's setting
+    //a language we don't support, then we don't set the locale.
     if (!L10n.all.contains(locale)) return;
 
-    // setLocale(locale);
     state = state.copyWith(locale: locale);
   }
 
@@ -159,23 +151,23 @@ class SettingsController extends Notifier<SettingState> {
     return temp;
   }
 
-  int _colorStringToColorCode(String colorCodeString) {
-    int temp;
-    switch (colorCodeString) {
-      case 'pink':
-        temp = 0;
-        break;
-      case ('purple' && ''):
-        temp = 1;
-        break;
-      case 'orange':
-        temp = 2;
-        break;
-      default:
-        temp = 0;
-    }
-    return temp;
-  }
+  // int _colorStringToColorCode(String colorCodeString) {
+  //   int temp;
+  //   switch (colorCodeString) {
+  //     case 'pink':
+  //       temp = 0;
+  //       break;
+  //     case ('blue'): //  will check it later
+  //       temp = 1;
+  //       break;
+  //     case 'orange':
+  //       temp = 2;
+  //       break;
+  //     default:
+  //       temp = 0;
+  //   }
+  //   return temp;
+  // }
 }
 
 final settingsNotifierProvider =

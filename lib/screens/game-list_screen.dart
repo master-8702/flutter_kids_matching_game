@@ -27,7 +27,7 @@ class _GameListScreenState extends State<GameListScreen> {
                   size: 50,
                 ),
                 onPressed: () {
-                  Navigator.pushNamed(context, '/setting2');
+                  Navigator.pushNamed(context, '/setting');
                 },
               ),
             ),
@@ -39,17 +39,7 @@ class _GameListScreenState extends State<GameListScreen> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, '/animalGame');
-                },
-                child: Text(
-                  AppLocalizations.of(context)!.animalGame,
-                ),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
+              
               ElevatedButton(
                 // style: ElevatedButton.styleFrom(
                 //   elevation: 10,
