@@ -2,8 +2,8 @@ import 'package:flutter/foundation.dart';
 
 import 'package:flutter_kids_matching_game/domain/game_item.dart';
 
-class AnimalGameScreenState {
-  const AnimalGameScreenState({
+class GameScreenState {
+  const GameScreenState({
     required this.score,
     required this.isGameOver,
     required this.choiceA,
@@ -17,13 +17,13 @@ class AnimalGameScreenState {
   final List<GameItem> choiceA;
   final List<GameItem> choiceB;
 
-  AnimalGameScreenState copyWith({
+  GameScreenState copyWith({
     int? score,
     bool? isGameOver,
     List<GameItem>? choiceA,
     List<GameItem>? choiceB,
   }) {
-    return AnimalGameScreenState(
+    return GameScreenState(
         score: score ?? this.score,
         isGameOver: isGameOver ?? this.isGameOver,
         choiceA: choiceA ?? this.choiceA,
@@ -31,7 +31,7 @@ class AnimalGameScreenState {
   }
 
   @override
-  bool operator ==(covariant AnimalGameScreenState other) {
+  bool operator ==(covariant GameScreenState other) {
     if (identical(this, other)) return true;
 
     return other.score == score &&
