@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:flutter_kids_matching_game/presentation/color_game_screen_controller.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'package:flutter_kids_matching_game/utilities/utilities.dart';
-// import 'package:flutter_kids_matching_game/presentation/animal_game_screen_controller.dart';
-
+import 'package:flutter_kids_matching_game/presentation/color_game_screen_controller.dart';
 class ColorGameResult extends ConsumerWidget {
   const ColorGameResult({
     super.key,
@@ -64,7 +62,6 @@ class ColorGameResult extends ConsumerWidget {
                 Utilities().nextGameLevel();
                 var temp = ref.read(colorGameScreenControllerProvider.notifier);
                 await temp.initGame(context);
-                await temp.state.copyWith();
                 
               },
             ),

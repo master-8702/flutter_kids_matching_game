@@ -2,14 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'package:audioplayers/audioplayers.dart';
-import 'package:flutter_kids_matching_game/presentation/fruit_game_screen/fruit_choice_a.dart';
-import 'package:flutter_kids_matching_game/presentation/fruit_game_screen/fruit_choice_b.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:flutter_kids_matching_game/presentation/fruit_game_screen_controller.dart';
-import 'package:flutter_kids_matching_game/presentation/color_game_screen/color_choice_a.dart';
-import 'package:flutter_kids_matching_game/presentation/color_game_screen/color_choice_b.dart';
-import 'package:flutter_kids_matching_game/presentation/color_game_screen/color_game_result.dart';
+import 'package:flutter_kids_matching_game/presentation/fruit_game_screen/fruit_choice_a.dart';
+import 'package:flutter_kids_matching_game/presentation/fruit_game_screen/fruit_choice_b.dart';
+import 'package:flutter_kids_matching_game/presentation/fruit_game_screen/fruit_game_result.dart';
+
 
 class FruitGameScreen extends ConsumerWidget {
   FruitGameScreen({Key? key}) : super(key: key);
@@ -73,7 +72,7 @@ class FruitGameScreen extends ConsumerWidget {
                       )
                     ],
                   ),
-                if (fruitGameController.isGameOver) const ColorGameResult(),
+                if (fruitGameController.isGameOver) const FruitGameResult(),
               ],
             ),
           ),
