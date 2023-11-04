@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_kids_matching_game/data/local_settings_repository.dart';
 import 'package:flutter_kids_matching_game/presentation/animal_game_screen/animal_game_screen.dart';
+import 'package:flutter_kids_matching_game/presentation/color_game_screen/color_game_screen.dart';
 import 'package:flutter_kids_matching_game/presentation/settings_screen/settings_screen.dart';
 import 'package:flutter_kids_matching_game/presentation/settings_screen_controller.dart';
-import 'package:flutter_kids_matching_game/screens/color_game_screen.dart';
+// import 'package:flutter_kids_matching_game/screens/color_game_screen.dart';
 import 'package:flutter_kids_matching_game/screens/fruit_game_screen.dart';
 import 'package:flutter_kids_matching_game/screens/game-list_screen.dart';
 import 'package:flutter_kids_matching_game/services/storage_service.dart';
@@ -61,7 +62,8 @@ class MyApp extends ConsumerWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => const GameListScreen(),
-        '/colorGame': (context) => const ColorGameScreen(),
+        // '/colorGame': (context) => const ColorGameScreen(),
+        '/colorGame': (context) => ColorGameScreen(),
         '/animalGame': (context) => AnimalGameScreen(),
         '/fruitGame': (context) => const FruitGameScreen(),
         '/setting': (context) => const SettingScreen(),

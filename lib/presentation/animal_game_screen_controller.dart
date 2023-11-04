@@ -5,13 +5,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:flutter_kids_matching_game/domain/game_item.dart';
 import 'package:flutter_kids_matching_game/utilities/utilities.dart';
-import 'package:flutter_kids_matching_game/data/animal_game_screen_state.dart';
+import 'package:flutter_kids_matching_game/data/game_screen_state.dart';
 
-class AnimalGameScreenController
-    extends AutoDisposeNotifier<AnimalGameScreenState> {
+class AnimalGameScreenController extends AutoDisposeNotifier<GameScreenState> {
   @override
-  AnimalGameScreenState build() {
-    return const AnimalGameScreenState(
+  GameScreenState build() {
+    return const GameScreenState(
         score: 0, isGameOver: false, choiceA: [], choiceB: []);
   }
 
@@ -185,7 +184,7 @@ class AnimalGameScreenController
         score: 0, isGameOver: false, choiceA: newChoiceA, choiceB: newChoiceB);
   }
 
-  // will be called everytime when we answer (match) a question 
+  // will be called everytime when we answer (match) a question
   void removeAnsweredChoices(GameItem answeredItem) {
     state.choiceA.remove(answeredItem);
     state.choiceB.remove(answeredItem);
@@ -193,6 +192,7 @@ class AnimalGameScreenController
       state = state.copyWith(isGameOver: true);
     }
   }
+
   // will be called when we match questions with answers correctly
   void scoreIncrement() {
     var tempScore = state.score;
@@ -210,7 +210,8 @@ class AnimalGameScreenController
 
 // here we are declaring a global provider [NotifierProvider] to be exact, for
 // our animalGameScreenController class
-final animalGameScreenControllerProvider = AutoDisposeNotifierProvider<
-    AnimalGameScreenController, AnimalGameScreenState>(() {
+final animalGameScreenControllerProvider =
+    AutoDisposeNotifierProvider<AnimalGameScreenController, GameScreenState>(
+        () {
   return AnimalGameScreenController();
 });
