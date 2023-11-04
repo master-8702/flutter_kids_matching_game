@@ -4,15 +4,16 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'package:flutter_kids_matching_game/utilities/utilities.dart';
-import 'package:flutter_kids_matching_game/presentation/color_game_screen_controller.dart';
-class ColorGameResult extends ConsumerWidget {
-  const ColorGameResult({
+import 'package:flutter_kids_matching_game/presentation/fruit_game_screen_controller.dart';
+
+class FruitGameResult extends ConsumerWidget {
+  const FruitGameResult({
     super.key,
   });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final colorGameController = ref.watch(colorGameScreenControllerProvider);
+    final fruitGameController = ref.watch(fruitGameScreenControllerProvider);
 
     return Column(
       children: [
@@ -20,14 +21,14 @@ class ColorGameResult extends ConsumerWidget {
           height: 100,
         ),
         Text(
-          "${colorGameController.score}/60",
+          "${fruitGameController.score}/60",
           style: const TextStyle(fontSize: 50),
         ),
         Text(
           AppLocalizations.of(context)!.gameOver,
           style: TextStyle(
               color:
-                  colorGameController.score >= 50 ? Colors.green : Colors.red,
+                  fruitGameController.score >= 50 ? Colors.green : Colors.red,
               fontWeight: FontWeight.bold,
               fontSize: 40),
         ),
@@ -40,7 +41,7 @@ class ColorGameResult extends ConsumerWidget {
             ),
             onPressed: () async {
               await ref
-                  .read(colorGameScreenControllerProvider.notifier)
+                  .read(fruitGameScreenControllerProvider.notifier)
                   .initGame(context);
             },
           ),
@@ -48,7 +49,7 @@ class ColorGameResult extends ConsumerWidget {
         const SizedBox(
           height: 15,
         ),
-        if ((colorGameController.score >= 50) &&
+        if ((fruitGameController.score >= 50) &&
             Utilities().getGameLevel() <= 4)
           Center(
             child: ElevatedButton(
@@ -60,9 +61,8 @@ class ColorGameResult extends ConsumerWidget {
               ),
               onPressed: () async {
                 Utilities().nextGameLevel();
-                var temp = ref.read(colorGameScreenControllerProvider.notifier);
+                var temp = ref.read(fruitGameScreenControllerProvider.notifier);
                 await temp.initGame(context);
-                
               },
             ),
           )
