@@ -5,8 +5,8 @@ import 'package:flutter_kids_matching_game/presentation/color_game_screen/color_
 import 'package:flutter_kids_matching_game/presentation/fruit_game_screen/fruit_game_screen.dart';
 import 'package:flutter_kids_matching_game/presentation/settings_screen/settings_screen.dart';
 import 'package:flutter_kids_matching_game/presentation/settings_screen_controller.dart';
-import 'package:flutter_kids_matching_game/screens/game-list_screen.dart';
-import 'package:flutter_kids_matching_game/services/storage_service.dart';
+import 'package:flutter_kids_matching_game/presentation/game-list_screen.dart';
+import 'package:flutter_kids_matching_game/utilities/services/storage_service.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get_storage/get_storage.dart';
