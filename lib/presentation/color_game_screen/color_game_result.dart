@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'package:flutter_kids_matching_game/utilities/utilities.dart';
-import 'package:flutter_kids_matching_game/presentation/color_game_screen_controller.dart';
+import 'package:flutter_kids_matching_game/presentation/color_game_screen/color_game_screen_controller.dart';
 class ColorGameResult extends ConsumerWidget {
   const ColorGameResult({
     super.key,
