@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'package:flutter_kids_matching_game/utilities/utilities.dart';
-import 'package:flutter_kids_matching_game/presentation/fruit_game_screen_controller.dart';
+import 'package:flutter_kids_matching_game/presentation/fruit_game_screen/fruit_game_screen_controller.dart';
 
 class FruitGameResult extends ConsumerWidget {
   const FruitGameResult({

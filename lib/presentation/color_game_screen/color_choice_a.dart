@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:flutter_kids_matching_game/domain/game_item.dart';
-import 'package:flutter_kids_matching_game/presentation/color_game_screen_controller.dart';
+import 'package:flutter_kids_matching_game/presentation/color_game_screen/color_game_screen_controller.dart';
 
 // a left side choices with the name of objects like colors, colors ...
 class ColorChoiceA extends ConsumerWidget {
