@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:flutter_kids_matching_game/constants/local_storage_keys.dart';
+import 'package:flutter_kids_matching_game/utilities/constants/local_storage_keys.dart';
 import 'package:flutter_kids_matching_game/data/settings_repository.dart';
-import 'package:flutter_kids_matching_game/services/storage_service.dart';
+import 'package:flutter_kids_matching_game/utilities/services/storage_service.dart';
 
 class LocalSettingsRepository extends SettingsRepository {
   late String _selectedLanguage;// = _storageService.read(kSelectedLanguageKey);

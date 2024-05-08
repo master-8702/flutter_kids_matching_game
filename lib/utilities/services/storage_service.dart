@@ -1,7 +1,7 @@
 import 'package:get_storage/get_storage.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:flutter_kids_matching_game/constants/local_storage_keys.dart';
+import 'package:flutter_kids_matching_game/utilities/constants/local_storage_keys.dart';
 
 class StorageService {
   late GetStorage _localStorage = GetStorage();
