@@ -36,14 +36,15 @@ class MyApp extends ConsumerWidget {
             primary: con.themeColor,
             // primary: provider.themeColor as Color,
             onError: Colors.red,
-            onBackground: Colors.white,
+            // onBackground: Colors.white,
             onSecondary: Colors.white,
             error: Colors.red,
-            background: Colors.white,
+            // background: Colors.white,
             onPrimary: Colors.white,
             brightness: Brightness.light,
             onSurface: Colors.black,
-            surface: Colors.grey,
+            surface: Colors.white,
+            // surface: con.themeColor,
 
             secondary: con.themeColor,
           ),
@@ -54,7 +55,10 @@ class MyApp extends ConsumerWidget {
               shape: BeveledRectangleBorder(
                   borderRadius: BorderRadius.circular(10)),
               textStyle:
-                  const TextStyle(fontSize: 40, fontStyle: FontStyle.italic),
+                  const TextStyle(
+                fontSize: 40,
+                fontStyle: FontStyle.italic,
+              ),
             ),
           ),
           buttonTheme: const ButtonThemeData()),
