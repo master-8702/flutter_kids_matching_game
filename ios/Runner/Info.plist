@@ -27,6 +27,13 @@
 	<string> am</string>
 	<string> ar</string>
 	</array>
+	<!-- added for translation (easy translation) support -->
+	<key>CFBundleLocalizations</key>
+	<array>
+	<string>en</string>
+	<string>nb</string>
+	</array>
+	<!-- up to this -->
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
