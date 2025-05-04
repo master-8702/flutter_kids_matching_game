@@ -195,6 +195,27 @@ class AppTheme {
         primaryColor = Colors.deepOrange;
         secondaryColor = Colors.yellowAccent;
         break;
+      case ThemeColor.green:
+        primary = Colors.green;
+        // secondary = Colors.lightGreenAccent;
+
+        primaryColor = Colors.green;
+        secondaryColor = Colors.greenAccent;
+        break;
+      case ThemeColor.red:
+        primary = Colors.red;
+        // secondary = Colors.redAccent;
+
+        primaryColor = Colors.red;
+        secondaryColor = Colors.redAccent;
+        break;
+      case ThemeColor.grey:
+        primary = Colors.black54;
+        // secondary = Colors.grey;
+
+        primaryColor = Colors.black45;
+        secondaryColor = Colors.grey;
+        break;
     }
 
     return ThemeData(
