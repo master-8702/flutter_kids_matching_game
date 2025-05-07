@@ -5,7 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:easy_localization/easy_localization.dart';
 
 import 'package:flutter_kids_matching_game/theme/app_theme.dart';
-import 'package:flutter_kids_matching_game/presentation/game-list_screen.dart';
+import 'package:flutter_kids_matching_game/presentation/home_screen.dart';
 import 'package:flutter_kids_matching_game/utilities/services/storage_service.dart';
 import 'package:flutter_kids_matching_game/presentation/settings_screen_controller.dart';
 import 'package:flutter_kids_matching_game/presentation/settings_screen/settings_screen.dart';
@@ -45,7 +45,7 @@ class MyApp extends ConsumerWidget {
         theme: currentTheme,
         initialRoute: '/',
         routes: {
-          '/': (context) => const GameListScreen(),
+          '/': (context) => const HomeScreen(),
           '/colorGame': (context) => ColorGameScreen(),
           '/animalGame': (context) => AnimalGameScreen(),
           '/fruitGame': (context) => FruitGameScreen(),
