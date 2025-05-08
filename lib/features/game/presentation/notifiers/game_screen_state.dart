@@ -1,7 +1,8 @@
 import 'package:flutter/foundation.dart';
 
-import 'package:flutter_kids_matching_game/domain/game_item.dart';
+import 'package:flutter_kids_matching_game/features/game/domain/game_item.dart';
 
+/// This class is our state class for the game screen
 class GameScreenState {
   const GameScreenState({
     required this.score,
@@ -12,8 +13,6 @@ class GameScreenState {
 
   final int score;
   final bool isGameOver;
-  // Utilities utilities = Utilities();
-
   final List<GameItem> choiceA;
   final List<GameItem> choiceB;
 
