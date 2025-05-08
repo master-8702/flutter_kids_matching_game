@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-import 'package:flutter_kids_matching_game/constants/setting_choices.dart';
+import 'package:flutter_kids_matching_game/core/constants/setting_choices.dart';
 
 /// this class is our state class for the app settings
 class SettingsState {

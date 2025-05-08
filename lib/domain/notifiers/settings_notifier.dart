@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:flutter_kids_matching_game/constants/setting_choices.dart';
+import 'package:flutter_kids_matching_game/core/constants/setting_choices.dart';
 import 'package:flutter_kids_matching_game/domain/states/settings_state.dart';
 import 'package:flutter_kids_matching_game/data/local_settings_repository.dart';
 

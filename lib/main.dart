@@ -4,10 +4,10 @@ import 'package:get_storage/get_storage.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:easy_localization/easy_localization.dart';
 
-import 'package:flutter_kids_matching_game/theme/app_theme.dart';
+import 'package:flutter_kids_matching_game/core/theme/app_theme.dart';
 import 'package:flutter_kids_matching_game/presentation/home_screen.dart';
-import 'package:flutter_kids_matching_game/utilities/services/storage_service.dart';
-import 'package:flutter_kids_matching_game/presentation/settings_screen_controller.dart';
+import 'package:flutter_kids_matching_game/services/storage_service.dart';
+import 'package:flutter_kids_matching_game/domain/notifiers/settings_notifier.dart';
 import 'package:flutter_kids_matching_game/presentation/settings_screen/settings_screen.dart';
 import 'package:flutter_kids_matching_game/presentation/color_game_screen/color_game_screen.dart';
 import 'package:flutter_kids_matching_game/presentation/fruit_game_screen/fruit_game_screen.dart';
@@ -39,7 +39,8 @@ class MyApp extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final settingsNotifier = ref.watch(settingsNotifierProvider);
-    final currentTheme = AppTheme.getThemeFor(settingsNotifier.themeColor);
+    final currentTheme =
+        AppTheme.getThemeFor(settingsNotifier.selectedThemeColor);
 
     return MaterialApp(
         theme: currentTheme,
