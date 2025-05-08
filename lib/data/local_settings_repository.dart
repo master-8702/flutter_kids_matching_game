@@ -1,97 +1,80 @@
-import 'package:flutter/material.dart';
-
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:flutter_kids_matching_game/utilities/constants/local_storage_keys.dart';
-import 'package:flutter_kids_matching_game/data/settings_repository.dart';
+import 'package:flutter_kids_matching_game/constants/local_storage_keys.dart';
 import 'package:flutter_kids_matching_game/utilities/services/storage_service.dart';
+import 'package:flutter_kids_matching_game/domain/repositories/settings_repository.dart';
 
-class LocalSettingsRepository extends SettingsRepository {
-  late String _selectedLanguage;// = _storageService.read(kSelectedLanguageKey);
-  late String _selectedLevel;// = _storageService.read(kSelectedLevelKey);
+/// This is a local settings repository class that implements the
+/// SettingsRepository interface. It uses the StorageService to persist
+/// settings data locally.
+class LocalSettingsRepository implements SettingsRepository {
+  final StorageService _storage;
 
-  late int _selectedThemeCode;// = getSelectedThemeCode();
-  late Locale _selectedLocale;
-  // late String _selectedLanguage = _storageService.read(kSelectedLanguageKey);
-  // late String _selectedLevel = _storageService.read(kSelectedLevelKey);
-  // late Color _selectedThemeColor = getSelectedThemeColor();
+  LocalSettingsRepository(this._storage);
 
-  // late int _selectedThemeCode = getSelectedThemeCode();
-  // late Locale _selectedLocale = _storageService.read(kSelectedLocaleKey);
-  final _storageService = StorageService();
+  Future<void> init() async => await _storage.init();
 
-  void initValues() async {
-    await _storageService.init();
-    _selectedLanguage = getSelectedLanguage();
-    _selectedLevel = getSelectedLevel();
-    // _selectedThemeColor = _storageService.read(kSelectedThemeColorKey);
-    _selectedThemeCode = getSelectedThemeCode();
-    _selectedLocale = getSelectedLocal();
+  // Setters
+  @override
+  Future<void> setSelectedLanguage(String languageName) async {
+    _storage.write(kSelectedLanguageKey, languageName);
   }
 
-// getters for settings variables
+  @override
+  Future<void> setSelectedLevel(String gameLevel) async {
+    _storage.write(kSelectedLevelKey, gameLevel);
+  }
+
+  @override
+  Future<void> setSelectedThemeColor(String themeColorName) async {
+    _storage.write(kSelectedThemeColorKey, themeColorName);
+  }
+
+  @override
+  Future<void> setSelectedThemeCode(int themeColorCode) async {
+    _storage.write(kSelectedThemeCodeKey, themeColorCode);
+  }
+
+  @override
+  Future<void> setSelectedLocale(String localeCode) async {
+    _storage.write(kSelectedLocaleKey, localeCode);
+  }
+
+  // resetters
+  @override
+  Future<void> resetSettings() async {
+    await _storage.reset();
+  }
+
+  // Getters
   @override
   String getSelectedLanguage() {
-    _selectedLanguage = _storageService.read(kSelectedLanguageKey);
-
-    return _selectedLanguage;
+    return _storage.read(kSelectedLanguageKey);
   }
 
   @override
   String getSelectedLevel() {
-    _selectedLevel = _storageService.read(kSelectedLevelKey);
+    return _storage.read(kSelectedLevelKey);
+  }
 
-    return _selectedLevel;
+  @override
+  String getSelectedLocale() {
+    return _storage.read(kSelectedLocaleKey);
   }
 
   @override
   int getSelectedThemeCode() {
-    _selectedThemeCode = _storageService.read(kSelectedThemeCodeKey);
-
-    return _selectedThemeCode;
+    return _storage.read(kSelectedThemeCodeKey);
   }
 
   @override
-  Locale getSelectedLocal() {
-    _selectedLocale = Locale(_storageService.read(kSelectedLocaleKey));
-    return _selectedLocale;
-  }
-
-// setters for settings variables
-
-  @override
-  void setSelectedLanguage(String language) {
-    _storageService.write(kSelectedLanguageKey, language);
-
-    if (getSelectedLanguage() == 'አማርኛ') {
-      // .setLocale(const Locale('am'));
-      setSelectedLocal(const Locale('am'));
-    } else if (getSelectedLanguage() == 'العربية') {
-      // provider.setLocale(const Locale('ar'));
-      setSelectedLocal(const Locale('ar'));
-    } else {
-      // provider.setLocale(const Locale('en'));
-      setSelectedLocal(const Locale('en'));
-    }
-  }
-
-  @override
-  void setSelectedLevel(String level) {
-    _storageService.write(kSelectedLevelKey, level);
-  }
-
-  @override
-  void setSelectedThemeCode(int themeCode) {
-    _storageService.write(kSelectedThemeCodeKey, themeCode);
-  }
-
-  @override
-  void setSelectedLocal(Locale locale) {
-    _storageService.write(kSelectedLocaleKey, locale.toString());
+  String getSelectedThemeColor() {
+    return _storage.read((kSelectedThemeColorKey));
   }
 }
 
 final localSettingsRepositoryProvider =
     Provider<LocalSettingsRepository>((ref) {
-  return LocalSettingsRepository();
+  final storage = ref.watch(storageServicesProvider);
+  return LocalSettingsRepository(storage);
 });
