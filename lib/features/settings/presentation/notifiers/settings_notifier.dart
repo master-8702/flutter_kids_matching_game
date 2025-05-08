@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:flutter_kids_matching_game/core/constants/setting_choices.dart';
-import 'package:flutter_kids_matching_game/domain/states/settings_state.dart';
-import 'package:flutter_kids_matching_game/data/local_settings_repository.dart';
+import 'package:flutter_kids_matching_game/features/settings/presentation/notifiers/settings_state.dart';
+import 'package:flutter_kids_matching_game/features/settings/data/local_settings_repository_impl.dart';
 
 // here we are declaring this notifier class in the domain folder rather than
 // a presentation model is that: we coordinate multiple repository calls,

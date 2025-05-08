@@ -2,7 +2,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:flutter_kids_matching_game/services/storage_service.dart';
 import 'package:flutter_kids_matching_game/core/constants/local_storage_keys.dart';
-import 'package:flutter_kids_matching_game/domain/repositories/settings_repository.dart';
+import 'package:flutter_kids_matching_game/features/settings/domain/repositories/settings_repository.dart';
 
 /// This is a local settings repository class that implements the
 /// SettingsRepository interface. It uses the StorageService to persist
