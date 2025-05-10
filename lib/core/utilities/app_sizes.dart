@@ -10,6 +10,10 @@ class AppSizes {
   static double getDraggableFontSize(BuildContext context) =>
       MediaQuery.of(context).size.width / 12;
 
+  static double getDragTargetHeight(BuildContext context) =>
+      MediaQuery.of(context).size.height * 0.1;
+  static double getDragTargetWidth(BuildContext context) =>
+      MediaQuery.of(context).size.width * 0.35;
   static EdgeInsets defaultPadding(BuildContext context) =>
       EdgeInsets.symmetric(
         horizontal: MediaQuery.of(context).size.width * 0.05,
