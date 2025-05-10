@@ -1,19 +1,25 @@
 import 'package:get_storage/get_storage.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:flutter_kids_matching_game/utilities/constants/local_storage_keys.dart';
+import 'package:flutter_kids_matching_game/core/constants/local_storage_keys.dart';
 
+/// This is a local storage service class that uses the GetStorage
+/// package to persist data locally. It provides methods to read and write
+/// data to the local storage. It also initializes the local storage
+/// with default values if the app is opened for the first time or
+/// has been cleared. The class is designed to be used with the
+/// Riverpod state management library, allowing for easy access
+/// and management of the local storage instance throughout the app.
 class StorageService {
   late GetStorage _localStorage = GetStorage();
 
 // instantiate the local storage if the app is opened for the first time
 // or has been cleared
   Future<StorageService> init() async {
- 
-     _localStorage = GetStorage();
-    await _localStorage.writeIfNull(kSelectedLanguageKey, 'English');
-    await _localStorage.writeIfNull(kSelectedLevelKey, 'Level 1');
-    await _localStorage.writeIfNull(kSelectedThemeColorKey, 'Pink');
+    _localStorage = GetStorage();
+    await _localStorage.writeIfNull(kSelectedLanguageKey, 'english');
+    await _localStorage.writeIfNull(kSelectedLevelKey, 1);
+    await _localStorage.writeIfNull(kSelectedThemeColorKey, 'pink');
     await _localStorage.writeIfNull(kSelectedThemeCodeKey, 0);
     await _localStorage.writeIfNull(kSelectedLocaleKey, 'en');
 
@@ -39,5 +45,7 @@ class StorageService {
 }
 
 final storageServicesProvider = Provider<StorageService>((ref) {
-  return StorageService();
+  final storage = StorageService();
+  storage.init();
+  return storage;
 });
