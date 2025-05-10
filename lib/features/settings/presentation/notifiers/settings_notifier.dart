@@ -23,7 +23,9 @@ class SettingsNotifier extends Notifier<SettingsState> {
     return SettingsState(
       selectedLanguage:
           AppLanguage.values.byName(_repository.getSelectedLanguage()),
-      selectedLevel: GameLevel.values.byName(_repository.getSelectedLevel()),
+      selectedLevel: GameLevel.values
+          .where((element) => element.number == _repository.getSelectedLevel())
+          .first,
       selectedThemeColor:
           ThemeColor.values.byName(_repository.getSelectedThemeColor()),
       selectedLocale: Locale(_repository.getSelectedLocale()),
@@ -41,7 +43,7 @@ class SettingsNotifier extends Notifier<SettingsState> {
 
   // setting game level
   Future<void> setLevel(GameLevel level) async {
-    await _repository.setSelectedLevel(level.name);
+    await _repository.setSelectedLevel(level.number);
     state = state.copyWith(selectedLevel: level);
   }
 
@@ -61,6 +63,17 @@ class SettingsNotifier extends Notifier<SettingsState> {
       selectedThemeColor: ThemeColor.pink,
       selectedLocale: Locale('en', 'US'),
     );
+  }
+
+  int getCurrentLevel() {
+    return state.selectedLevel.number;
+  }
+
+  // getting (and setting as well) the next game level
+  int getNextGameLevel() {
+    final nextGameLevel = _repository.getNextGameLevel();
+    state = state.copyWith(selectedLevel: GameLevel.values.where((element) => element.number == nextGameLevel).first);
+    return nextGameLevel;
   }
 }
 

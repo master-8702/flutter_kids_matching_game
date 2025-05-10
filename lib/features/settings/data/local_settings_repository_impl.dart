@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:flutter_kids_matching_game/services/storage_service.dart';
+import 'package:flutter_kids_matching_game/core/services/storage_service.dart';
 import 'package:flutter_kids_matching_game/core/constants/local_storage_keys.dart';
 import 'package:flutter_kids_matching_game/features/settings/domain/repositories/settings_repository.dart';
 
@@ -21,7 +21,7 @@ class LocalSettingsRepository implements SettingsRepository {
   }
 
   @override
-  Future<void> setSelectedLevel(String gameLevel) async {
+  Future<void> setSelectedLevel(int gameLevel) async {
     _storage.write(kSelectedLevelKey, gameLevel);
   }
 
@@ -53,8 +53,33 @@ class LocalSettingsRepository implements SettingsRepository {
   }
 
   @override
-  String getSelectedLevel() {
+  int getSelectedLevel() {
     return _storage.read(kSelectedLevelKey);
+  }
+
+  /// this method is used to get the next game level, it also sets the
+  /// selected level to the next level in the local storage
+  /// if the current level is 5, it will set the selected level to 1
+  @override
+  int getNextGameLevel() {
+    final currentLevel = _storage.read(kSelectedLevelKey);
+    switch (currentLevel) {
+      case 1:
+        setSelectedLevel(2);
+        return 2;
+      case 2:
+        setSelectedLevel(3);
+        return 3;
+      case 3:
+        setSelectedLevel(4);
+        return 4;
+      case 4:
+        setSelectedLevel(5);
+        return 5;
+      default:
+        setSelectedLevel(1);
+        return 1;
+    }
   }
 
   @override

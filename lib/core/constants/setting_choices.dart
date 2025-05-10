@@ -48,6 +48,21 @@ extension GameLevelExtension on GameLevel {
         return 'level5';
     }
   }
+
+   int get number {
+    switch (this) {
+      case GameLevel.level1:
+        return 1;
+      case GameLevel.level2:
+        return 2;
+      case GameLevel.level3:
+        return 3;
+      case GameLevel.level4:
+        return 4;
+      case GameLevel.level5:
+        return 5;
+    }
+  }
 }
 
 /// app supported languages enum constant
