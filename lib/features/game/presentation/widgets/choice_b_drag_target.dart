@@ -1,30 +1,31 @@
 import 'package:flutter/material.dart';
 
-import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:flutter_kids_matching_game/core/utilities/app_sizes.dart';
 import 'package:flutter_kids_matching_game/core/services/audio_service.dart';
 import 'package:flutter_kids_matching_game/features/game/domain/game_item.dart';
-import 'package:flutter_kids_matching_game/features/game/presentation/notifiers/animal_game_screen_notifier.dart';
+import 'package:flutter_kids_matching_game/features/game/presentation/widgets/game_drag_target_card.dart';
+import 'package:flutter_kids_matching_game/features/game/presentation/notifiers/game_screen_notifier.dart';
 
-/// This widget is used to show the right side choices in the animal game
-/// screen. It shows the images of the animals that are not draggable
-/// (they are drag targets).
+/// This widget is used to show the right side choices in the game
+/// screens. It shows the images of the animals/fruits/colors that are not
+/// draggable (they are drag targets).
 class ChoiceB extends ConsumerWidget {
   const ChoiceB({
     super.key,
-    required AudioPlayer audioController,
   });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final animalGameController = ref.watch(animalGameScreenNotifierProvider);
+    final gameScreenNotifier = ref.watch(gameScreenNotifierProvider);
     final audioService = ref.read(audioServiceProvider);
 
     return Column(
-      children: animalGameController.choiceB.map((choice) {
-        final controller = ref.read(animalGameScreenNotifierProvider.notifier);
+      // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      spacing: 12,
+      children: gameScreenNotifier.choiceB.map((choice) {
+        final controller = ref.read(gameScreenNotifierProvider.notifier);
+
         return DragTarget<GameItem>(
           // here [onAccept] is Called when an acceptable piece of data was
           // dropped over this drag target.
@@ -36,7 +37,7 @@ class ChoiceB extends ConsumerWidget {
 
               choice.accepting = false;
             } else {
-              await audioService.playError();
+              // await audioService.playError();
               choice.accepting = false;
               controller.scoreDecrement();
             }
@@ -54,13 +55,10 @@ class ChoiceB extends ConsumerWidget {
             return true;
           },
           builder: (context, acceptedItem, rejectedItem) {
-            return Container(
-              color: Colors.white,
-              height: AppSizes.getDragTargetHeight(context),
-              width: AppSizes.getDragTargetWidth(context),
-              alignment: Alignment.center,
-              margin: const EdgeInsets.all(8),
-              child: Image.asset(choice.image),
+            // here we are using the GameDragTargetCard widget to show the
+            // images of the animals/fruits/colors that are drag targets
+            return GameDragTargetCard(
+              imagePath: choice.image,
             );
           },
         );

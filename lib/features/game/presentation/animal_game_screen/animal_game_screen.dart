@@ -4,14 +4,17 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:easy_localization/easy_localization.dart';
 
+import 'package:flutter_kids_matching_game/core/constants/game_type.dart';
 import 'package:flutter_kids_matching_game/core/constants/setting_choices.dart';
-import 'package:flutter_kids_matching_game/features/game/presentation/animal_game_screen/choice_a.dart';
-import 'package:flutter_kids_matching_game/features/game/presentation/animal_game_screen/choice_b.dart';
-import 'package:flutter_kids_matching_game/features/game/presentation/animal_game_screen/game_result.dart';
+import 'package:flutter_kids_matching_game/features/game/presentation/widgets/choice_a_draggable.dart';
+import 'package:flutter_kids_matching_game/features/game/presentation/widgets/choice_b_drag_target.dart';
+import 'package:flutter_kids_matching_game/features/game/presentation/game_result.dart';
 import 'package:flutter_kids_matching_game/features/settings/presentation/notifiers/settings_notifier.dart';
-import 'package:flutter_kids_matching_game/features/game/presentation/notifiers/animal_game_screen_notifier.dart';
+import 'package:flutter_kids_matching_game/features/game/presentation/notifiers/game_screen_notifier.dart';
 
-/// This widget is used to show the animal game screen
+/// This widget is used to show the animal game screen, where the user can
+/// drag the left side names and drop them on right side of the choices, right on
+/// their picture.
 class AnimalGameScreen extends ConsumerStatefulWidget {
   const AnimalGameScreen({Key? key}) : super(key: key);
   @override
@@ -34,8 +37,8 @@ class _AnimalGameScreenState extends ConsumerState<AnimalGameScreen> {
       final level = ref.read(settingsNotifierProvider).selectedLevel;
 
       ref
-          .read(animalGameScreenNotifierProvider.notifier)
-          .initGame(currentLevel: level.number);
+          .read(gameScreenNotifierProvider.notifier)
+          .initGame(currentLevel: level.number, gameType: GameType.animal);
     });
   }
 
@@ -58,7 +61,7 @@ class _AnimalGameScreenState extends ConsumerState<AnimalGameScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final animalGameController = ref.watch(animalGameScreenNotifierProvider);
+    final animalGameController = ref.watch(gameScreenNotifierProvider);
 
     return Scaffold(
       appBar: AppBar(
@@ -67,29 +70,27 @@ class _AnimalGameScreenState extends ConsumerState<AnimalGameScreen> {
           style: const TextStyle(fontSize: 30),
         ),
       ),
-      body: Material(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                if (!animalGameController.isGameOver)
-                  Row(
-                    children: <Widget>[
-                      // left side choices with names
-                      const ChoiceA(),
-                      const Spacer(),
-                      // right side choices with pictures
-                      ChoiceB(
-                        audioController: _audioController,
-                      )
-                    ],
-                  ),
-                if (animalGameController.isGameOver) const GameResult(),
-              ],
-            ),
-          ),
+      body: Padding(
+        padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.05),
+        child: Column(
+          children: [
+            if (!animalGameController.isGameOver)
+              const Row(
+                children: <Widget>[
+                  // left side choices with names
+                  ChoiceA(),
+                  Spacer(),
+                  // right side choices with pictures
+                  ChoiceB()
+                ],
+              ),
+            if (animalGameController.isGameOver)
+              const Expanded(
+                child: GameResult(
+                  gameType: GameType.animal,
+                ),
+              ),
+          ],
         ),
       ),
       // floating action button for restarting the game
