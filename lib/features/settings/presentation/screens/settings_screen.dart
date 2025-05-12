@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -16,7 +17,7 @@ class SettingScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Settings", style: AppTheme.textTheme.displayLarge),
+        title: Text('settings', style: AppTheme.textTheme.displayLarge).tr(),
         centerTitle: true,
         backgroundColor: AppTheme.primaryColor,
       ),
@@ -57,6 +58,7 @@ class SettingScreen extends ConsumerWidget {
               child: const ThemeColorSelector(),
             ),
             const Spacer(),
+            _buildFooter(context),
           ],
         ),
       ),
@@ -109,5 +111,64 @@ class SettingScreen extends ConsumerWidget {
         ],
       ),
     );
+  }
+
+  // this method will build the footer of the settings page
+  // it will contain the developer name and the version of the app
+  Column _buildFooter(BuildContext context) {
+    return Column(
+      children: [
+        const Divider(
+          thickness: 5, // thickness of the line
+          indent: 20, // empty space to the leading edge of divider.
+          endIndent: 20, // empty space to the trailing edge of the divider.
+          color: Colors.black, // The color to use when painting the line.
+          height: 20, // The divider's height extent.
+        ),
+        InkWell(
+            onTap: () => _copyEmailToClipboard(context),
+            onLongPress: () => ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: const Text('developed_by_name').tr()),
+                ),
+            child: Text.rich(
+              TextSpan(
+                style: const TextStyle(color: Colors.black, fontSize: 18),
+                children: [
+                  TextSpan(
+                      text: 'developed_by'.tr(),
+                      style: const TextStyle(fontSize: 25)),
+                  TextSpan(
+                    text: 'ibs'.tr(),
+                    style: const TextStyle(
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold,
+                      decoration: TextDecoration.underline,
+                    ),
+                  ),
+                ],
+              ),           
+            )),
+        Text('${'version'.tr()} 1.5.0'),
+        const Divider(
+          // already const, no change needed
+          thickness: 5,
+          indent: 20, endIndent: 20,
+          color: Colors.black,
+          height: 20,
+        ),
+      ],
+    );
+  }
+
+  // this method will copy the email to the clipboard
+  void _copyEmailToClipboard(BuildContext context) {
+    const email = 'contact@ibrahimselman.com';
+
+    Clipboard.setData(const ClipboardData(text: email)).then((_) {
+      // Show snackbar to  notify the user that the email is copied
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('email_copied'.tr())),
+      );
+    });
   }
 }

@@ -112,5 +112,11 @@
     "rhinoceros": "Rhinoceros",
     "lets_play": "Let's Play!",
     "master_games": "Master Games",
-    "you_win": "You Win!"
+    "you_win": "You Win!",
+    "settings": "Settings",
+    "developed_by": "This App is Developed by ",
+    "ibs": "IBS",
+    "version": "version",
+    "email_copied": "Email copied to clipboard",
+    "developed_by_name": "Developed by Ibrahim Selman"
 }
