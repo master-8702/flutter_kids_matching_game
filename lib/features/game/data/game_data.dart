@@ -219,9 +219,9 @@ class GameData {
         value: 'gray',
         level: 2),
     GameItem(
-        image: "assets/images/colors/Navy Blue.png",
-        name: 'navyblue',
-        value: 'navyblue',
+        image: "assets/images/colors/NavyBlue.png",
+        name: 'navy_blue',
+        value: 'navy_blue',
         level: 3),
     GameItem(
         image: "assets/images/colors/Golden.png",
@@ -269,9 +269,9 @@ class GameData {
         value: 'coral',
         level: 4),
     GameItem(
-        image: "assets/images/colors/Mauve.png",
-        name: 'mauve',
-        value: 'mauve',
+        image: "assets/images/colors/Brown.png",
+        name: 'brown',
+        value: 'brown',
         level: 4),
     GameItem(
         image: "assets/images/colors/Teal.png",
@@ -372,9 +372,9 @@ class GameData {
         value: 'watermelon',
         level: 2),
     GameItem(
-        image: "assets/images/fruits/cactusfruit.png",
-        name: 'cactusfruit',
-        value: 'cactusfruit',
+        image: "assets/images/fruits/cactus_fruit.png",
+        name: 'cactus_fruit',
+        value: 'cactus_fruit',
         level: 3),
     GameItem(
         image: "assets/images/fruits/cherry.png",
@@ -427,9 +427,9 @@ class GameData {
         value: 'soursop',
         level: 4),
     GameItem(
-        image: "assets/images/fruits/whitesapote.png",
-        name: 'whitesapote',
-        value: 'whitesapote',
+        image: "assets/images/fruits/white_sapote.png",
+        name: 'white_sapote',
+        value: 'white_sapote',
         level: 4),
     GameItem(
         image: "assets/images/fruits/date.png",
@@ -447,9 +447,9 @@ class GameData {
         value: 'nectarine',
         level: 5),
     GameItem(
-        image: "assets/images/fruits/passionfruit.png",
-        name: 'passionfruit',
-        value: 'passionfruit',
+        image: "assets/images/fruits/passion_fruit.png",
+        name: 'passion_fruit',
+        value: 'passion_fruit',
         level: 5),
     GameItem(
         image: "assets/images/fruits/peach.png",

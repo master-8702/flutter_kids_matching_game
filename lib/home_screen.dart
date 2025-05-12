@@ -46,7 +46,7 @@ class _HomeScreenState extends State<HomeScreen> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Text(
-                  'letsPlay'.tr(),
+                  'lets_play'.tr(),
                   style: Theme.of(context).textTheme.displayMedium,
                   textAlign: TextAlign.center,
                 ),
@@ -59,7 +59,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     alignment: Alignment.topCenter,
                     child: CircleAvatar(
                       backgroundImage:
-                          AssetImage('assets/images/kid_mascot2.png'),
+                          AssetImage('assets/images/kid_mascot.png'),
                       radius: 100,
                     ),
                   ),
@@ -69,7 +69,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
                 // Game Buttons
                 GameButton(
-                  label: 'colorGame'.tr(),
+                  label: 'color_game'.tr(),
                   color: Colors.orange,
                   icon: Icons.color_lens,
                   onTap: () {
@@ -80,7 +80,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 const SizedBox(height: 25),
 
                 GameButton(
-                  label: 'animalGame'.tr(),
+                  label: 'animal_game'.tr(),
                   color: Colors.green,
                   icon: Icons.pets,
                   onTap: () {
@@ -91,7 +91,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 const SizedBox(height: 25),
 
                 GameButton(
-                  label: 'fruitGame'.tr(),
+                  label: 'fruit_game'.tr(),
                   color: Colors.red,
                   icon: Icons.local_dining,
                   onTap: () {

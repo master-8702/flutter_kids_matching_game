@@ -293,15 +293,17 @@ class _GameResultState extends ConsumerState<GameResult>
   void _restartGame(WidgetRef ref, SettingsState settingsState) async {
     await ref.read(gameScreenNotifierProvider.notifier).initGame(
           gameType: widget.gameType,
-          currentLevel: settingsState.selectedLevel.number + 1,
+          currentLevel: settingsState.selectedLevel.number,
         );
   }
 
   // Function to go to the next level
   void _nextLevel(WidgetRef ref, SettingsState settingsState) async {
+    final nextLevel =
+        ref.read(settingsNotifierProvider.notifier).getNextGameLevel();
     await ref.read(gameScreenNotifierProvider.notifier).initGame(
           gameType: widget.gameType,
-          currentLevel: settingsState.selectedLevel.number + 2,
+          currentLevel: nextLevel,
         );
   }
 

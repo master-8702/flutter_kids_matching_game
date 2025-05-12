@@ -17,7 +17,7 @@ class ThemeColorSelector extends ConsumerWidget {
 
     return buildDropdown<ThemeColor>(
       context: context,
-      label: 'themeColor'.tr(),
+      label: 'theme_color'.tr(),
       value: settings.selectedThemeColor,
       items: ThemeColor.values.map((color) {
         return DropdownMenuItem<ThemeColor>(

@@ -4,14 +4,14 @@ import 'package:get_storage/get_storage.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:easy_localization/easy_localization.dart';
 
+import 'package:flutter_kids_matching_game/home_screen.dart';
 import 'package:flutter_kids_matching_game/core/theme/app_theme.dart';
-import 'package:flutter_kids_matching_game/presentation/home_screen.dart';
-import 'package:flutter_kids_matching_game/services/storage_service.dart';
-import 'package:flutter_kids_matching_game/features/settings/presentation/notifiers/settings_notifier.dart';
+import 'package:flutter_kids_matching_game/core/services/storage_service.dart';
+import 'package:flutter_kids_matching_game/features/game/presentation/color_game_screen.dart';
+import 'package:flutter_kids_matching_game/features/game/presentation/fruit_game_screen.dart';
+import 'package:flutter_kids_matching_game/features/game/presentation/animal_game_screen.dart';
 import 'package:flutter_kids_matching_game/features/settings/presentation/screens/settings_screen.dart';
-import 'package:flutter_kids_matching_game/presentation/color_game_screen/color_game_screen.dart';
-import 'package:flutter_kids_matching_game/presentation/fruit_game_screen/fruit_game_screen.dart';
-import 'package:flutter_kids_matching_game/presentation/animal_game_screen/animal_game_screen.dart';
+import 'package:flutter_kids_matching_game/features/settings/presentation/notifiers/settings_notifier.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -47,9 +47,9 @@ class MyApp extends ConsumerWidget {
         initialRoute: '/',
         routes: {
           '/': (context) => const HomeScreen(),
-          '/colorGame': (context) => ColorGameScreen(),
-          '/animalGame': (context) => AnimalGameScreen(),
-          '/fruitGame': (context) => FruitGameScreen(),
+          '/colorGame': (context) => const ColorGameScreen(),
+          '/animalGame': (context) => const AnimalGameScreen(),
+          '/fruitGame': (context) => const FruitGameScreen(),
           '/setting': (context) => const SettingScreen(),
         },
         localizationsDelegates: context.localizationDelegates,
