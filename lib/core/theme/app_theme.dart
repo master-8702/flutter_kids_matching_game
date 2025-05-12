@@ -210,10 +210,10 @@ class AppTheme {
         secondaryColor = Colors.redAccent;
         break;
       case ThemeColor.gray:
-        primary = Colors.black54;
+        primary = Colors.blueGrey;
         // secondary = Colors.gray;
 
-        primaryColor = Colors.black45;
+        primaryColor = Colors.blueGrey;
         secondaryColor = Colors.grey;
         break;
     }
