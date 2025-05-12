@@ -9,24 +9,28 @@ class GameScreenState {
     required this.isGameOver,
     required this.choiceA,
     required this.choiceB,
+    required this.matchedItems,
   });
 
   final int score;
   final bool isGameOver;
   final List<GameItem> choiceA;
   final List<GameItem> choiceB;
+  final List<GameItem> matchedItems;
 
   GameScreenState copyWith({
     int? score,
     bool? isGameOver,
     List<GameItem>? choiceA,
     List<GameItem>? choiceB,
+    List<GameItem>? matchedItems,
   }) {
     return GameScreenState(
         score: score ?? this.score,
         isGameOver: isGameOver ?? this.isGameOver,
         choiceA: choiceA ?? this.choiceA,
-        choiceB: choiceB ?? this.choiceB);
+        choiceB: choiceB ?? this.choiceB,
+        matchedItems: matchedItems ?? this.matchedItems);
   }
 
   @override
@@ -36,7 +40,8 @@ class GameScreenState {
     return other.score == score &&
         other.isGameOver == isGameOver &&
         listEquals(other.choiceA, choiceA) &&
-        listEquals(other.choiceB, choiceB);
+        listEquals(other.choiceB, choiceB) &&
+        listEquals(other.matchedItems, matchedItems);
   }
 
   @override
@@ -44,6 +49,7 @@ class GameScreenState {
     return score.hashCode ^
         isGameOver.hashCode ^
         choiceA.hashCode ^
-        choiceB.hashCode;
+        choiceB.hashCode ^
+        matchedItems.hashCode;
   }
 }
