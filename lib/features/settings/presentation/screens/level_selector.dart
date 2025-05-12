@@ -17,7 +17,7 @@ class LevelSelector extends ConsumerWidget {
 
     return buildDropdown<GameLevel>(
       context: context,
-      label: 'gameLevel'.tr(),
+      label: 'game_level'.tr(),
       value: settings.selectedLevel,
       items: GameLevel.values.map((level) {
         return DropdownMenuItem<GameLevel>(

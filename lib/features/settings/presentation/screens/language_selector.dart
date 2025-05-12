@@ -17,7 +17,7 @@ class LanguageSelector extends ConsumerWidget {
 
     return buildDropdown<AppLanguage>(
       context: context,
-      label: 'app_language'.tr(),
+      label: 'lesson_language'.tr(),
       value: settings.selectedLanguage,
       items: AppLanguage.values.map((lang) {
         return DropdownMenuItem<AppLanguage>(

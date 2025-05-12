@@ -209,9 +209,9 @@ class AppTheme {
         primaryColor = Colors.red;
         secondaryColor = Colors.redAccent;
         break;
-      case ThemeColor.grey:
+      case ThemeColor.gray:
         primary = Colors.black54;
-        // secondary = Colors.grey;
+        // secondary = Colors.gray;
 
         primaryColor = Colors.black45;
         secondaryColor = Colors.grey;

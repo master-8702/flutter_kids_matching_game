@@ -119,7 +119,7 @@ extension AppLanguageExtension on AppLanguage {
 }
 
 /// app theme color enum constant
-enum ThemeColor { pink, purple, orange, green, red, grey }
+enum ThemeColor { pink, purple, orange, green, red, gray }
 
 extension ThemeColorExtension on ThemeColor {
   String get translatedName {
@@ -134,8 +134,8 @@ extension ThemeColorExtension on ThemeColor {
         return 'green'.tr();
       case ThemeColor.red:
         return 'red'.tr();
-      case ThemeColor.grey:
-        return 'grey'.tr();
+      case ThemeColor.gray:
+        return 'gray'.tr();
     }
   }
 
@@ -151,8 +151,8 @@ extension ThemeColorExtension on ThemeColor {
         return 'green';
       case ThemeColor.red:
         return 'red';
-      case ThemeColor.grey:
-        return 'grey';
+      case ThemeColor.gray:
+        return 'gray';
     }
   }
 
@@ -168,7 +168,7 @@ extension ThemeColorExtension on ThemeColor {
         return Colors.green;
       case ThemeColor.red:
         return Colors.red;
-      case ThemeColor.grey:
+      case ThemeColor.gray:
         return Colors.black54;
     }
   }
@@ -185,7 +185,7 @@ extension ThemeColorExtension on ThemeColor {
         return 3;
       case ThemeColor.red:
         return 4;
-      case ThemeColor.grey:
+      case ThemeColor.gray:
         return 5;
     }
   }
