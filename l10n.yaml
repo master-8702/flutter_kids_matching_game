@@ -1,5 +1,0 @@
-
-
-arb-dir: lib/l10n         # location of input files for translations
-template-arb-file: app_en.arb
-output-localization-file: app_localizations.dart

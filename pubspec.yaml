@@ -47,16 +47,25 @@ flutter:
     - assets/translations/
 
   fonts:
+    - family: Fredoka
+      fonts:
+        - asset: assets/fonts/Fredoka/Fredoka-Regular.ttf
+        - weight: 700
+          asset: assets/fonts/Fredoka/Fredoka-Bold.ttf
+
+    - family: Nunito
+      fonts:
+        - asset: assets/fonts/Nunito/Nunito-Regular.ttf
+        - weight: 700
+          asset: assets/fonts/Nunito/Nunito-Bold.ttf
+
     - family: PrincessSofia
       fonts:
-        - asset: assets/fonts/PrincessSofia-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
+        - asset: assets/fonts/PrincessSofia/PrincessSofia-Regular.ttf
+
     - family: Sunnyspells
       fonts:
-        - asset: assets/fonts/SunnyspellsRegular.otf
-  #       - asset: fonts/TrajanPro_Bold.ttf
-  #         weight: 700
+        - asset: assets/fonts/Sunnyspells/Sunnyspells-Regular.otf
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
