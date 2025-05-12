@@ -10,7 +10,7 @@ import 'package:flutter_kids_matching_game/core/constants/game_type.dart';
 import 'package:flutter_kids_matching_game/core/utilities/app_spacing.dart';
 import 'package:flutter_kids_matching_game/core/utilities/game_config.dart';
 import 'package:flutter_kids_matching_game/core/constants/setting_choices.dart';
-import 'package:flutter_kids_matching_game/features/game/presentation/notifiers/overlap.dart';
+import 'package:flutter_kids_matching_game/features/game/presentation/notifiers/overlapped_game_icons.dart';
 import 'package:flutter_kids_matching_game/features/game/presentation/notifiers/game_screen_state.dart';
 import 'package:flutter_kids_matching_game/features/settings/presentation/notifiers/settings_state.dart';
 import 'package:flutter_kids_matching_game/features/game/presentation/notifiers/game_screen_notifier.dart';
@@ -100,7 +100,7 @@ class _GameResultState extends ConsumerState<GameResult>
     final isWinner = gameState.score >= GameConfig.passingScore;
 
     return SingleChildScrollView(
-      padding: const EdgeInsets.all(20),
+      // padding: const EdgeInsets.all(20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
